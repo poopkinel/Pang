@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   _name: 
-  _targetModels: []
-  _platforms: []
   _timeToFinish: 120
   _levelBackgroundImage: {fileID: 0}
-  _loots: []
-  _weapons: []
+  _levelLoots: 000000000100000002000000
+  _levelWeapons:
+  - {fileID: 11400000, guid: 5985cc97d1ddf4f4eb96077cae45bd1d, type: 2}
+  - {fileID: 11400000, guid: ec15a980741967146b3ba4ea6e017b19, type: 2}
