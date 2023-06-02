@@ -21,17 +21,24 @@ namespace Gameplay.Controllers
         {
         }
 
-        [ContextMenu("Test/OnPlayerCollisionWithWeaponLoot")]
+        [ContextMenu("Test/On Player Collision With Weapon Loot")]
         public void TestOnPlayerCollideWithWeaponRandomLoot()
         {
             WeaponController loot = new WeaponController(_levelController.Model.Weapons[1]); // Gun
             loot.ApplyEffect(_levelController.Model, _model);
         }
 
-        [ContextMenu("Test/OnPlayerCollisionWithBall")]
+        [ContextMenu("Test/On Player Collision With Ball")]
         public void TestOnPlayerCollisionWithBall()
         {
             _model.LoseLife();
+        }
+
+        [ContextMenu("Test/On Projectile Hit With Ball")]
+        public void TetsOnProjectileHitWithBall()
+        {
+            int pointsToAdd = _levelController.Model.PointsForEachBallHit;
+            _model.AddPoints(pointsToAdd);
         }
     }
 }

@@ -41,6 +41,11 @@ namespace Gameplay.Models
             _lives--;
         }
 
+        public void AddPoints(int points)
+        {
+            _score += points;
+        }
+
         #endregion
 
         #region Properties

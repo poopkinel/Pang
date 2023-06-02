@@ -22,6 +22,9 @@ namespace Gameplay.Models
         [SerializeField]
         private WeaponModel[] _levelWeapons;
 
+        [SerializeField]
+        private int _pointsForEachBallHit;
+
         public string LevelName => _name;
 
         public float TimeToFinish => _timeToFinish;
@@ -31,5 +34,7 @@ namespace Gameplay.Models
         public LootType[] Loots => _levelLoots;
 
         public WeaponModel[] Weapons => _levelWeapons;
+
+        public int PointsForEachBallHit => _pointsForEachBallHit;
     }
 }
