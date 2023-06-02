@@ -21,6 +21,28 @@ namespace Gameplay.Controllers
         {
         }
 
+        #region Methods
+
+        public void OnPlayerCollideWithWeaponRandomLoot(ILoot loot)
+        {
+            loot.ApplyEffect(_levelController.Model, _model);
+        }
+
+        public void OnPlayerCollisionWithBall()
+        {
+            _model.LoseLife();
+        }
+
+        public void OnProjectileHitWithBall()
+        {
+            int pointsToAdd = _levelController.Model.PointsForEachBallHit;
+            _model.AddPoints(pointsToAdd);
+        }
+
+        #endregion
+
+        #region Tests
+
         [ContextMenu("Test/On Player Collision With Weapon Loot")]
         public void TestOnPlayerCollideWithWeaponRandomLoot()
         {
@@ -40,5 +62,7 @@ namespace Gameplay.Controllers
             int pointsToAdd = _levelController.Model.PointsForEachBallHit;
             _model.AddPoints(pointsToAdd);
         }
+
+        #endregion
     }
 }
