@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerModel _model;
 
+    [SerializeField]
+    private LevelController _levelController;
+
     //[SerializeField]
     //private WeaponView weaponView;
 
@@ -20,10 +23,9 @@ public class PlayerController : MonoBehaviour
     }
 
     [ContextMenu("Test/On Player Collision With Weapon Loot")]
-    public void OnPlayerCollideWithWeaponLoot() //WeaponLootView weaponLootView)
+    public void OnPlayerCollideWithWeaponLoot(ILoot loot)
     {
-        //_model.CollectWeaponLoot(weaponLootView.Model);
-        _model.SetCurrentWeapon(_testWeaponModel);
+        loot.ApplyEffect(_levelController.Model, _model);
     }
 
     //private void CollectLoot(WeaponLootModel weaponLoot)
