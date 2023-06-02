@@ -33,7 +33,7 @@ namespace Gameplay.Controllers
             _model.LoseLife();
         }
 
-        public void OnProjectileHitWithBall()
+        public void OnProjectileHitWithBall(int ballId)
         {
             int pointsToAdd = _levelController.Model.PointsForEachBallHit;
             _model.AddPoints(pointsToAdd);

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   _name: 
+  _ballsModel: {fileID: 11400000, guid: acfa44a991cfc9649b33ff1b67667cb9, type: 2}
   _timeToFinish: 120
   _levelBackgroundImage: {fileID: 0}
   _levelLoots: 000000000100000002000000

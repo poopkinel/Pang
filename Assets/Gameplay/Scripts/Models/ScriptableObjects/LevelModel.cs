@@ -11,6 +11,9 @@ namespace Gameplay.Models
         private string _name;
 
         [SerializeField]
+        private BallsModel _ballsModel;
+
+        [SerializeField]
         private float _timeToFinish;
 
         [SerializeField]
@@ -26,6 +29,8 @@ namespace Gameplay.Models
         private int _pointsForEachBallHit;
 
         public string LevelName => _name;
+
+        public BallsModel BallsModel => _ballsModel;
 
         public float TimeToFinish => _timeToFinish;
 

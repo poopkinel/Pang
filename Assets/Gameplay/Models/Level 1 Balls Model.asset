@@ -10,14 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d543a758fcfd80a46954afe23de36d8f, type: 3}
-  m_Name: Balls Model
+  m_Name: Level 1 Balls Model
   m_EditorClassIdentifier: 
-  balls:
-  - id: 0
-    hitsLeft: 2
-    isDestroyed: 0
-    spawnPosition: {x: 0, y: 0}
-  - id: 2
-    hitsLeft: 4
-    isDestroyed: 0
-    spawnPosition: {x: 0, y: 0}
+  _balls:
+  - _id: 100
+    _hitsLeft: 4
+    _spawnPosition: {x: 2, y: 2}
