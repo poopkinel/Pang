@@ -22,15 +22,16 @@ namespace Gameplay.Controllers
         }
 
         [ContextMenu("Test/OnPlayerCollisionWithWeaponLoot")]
-        public void OnPlayerCollideWithWeaponRandomLoot()
+        public void TestOnPlayerCollideWithWeaponRandomLoot()
         {
             WeaponController loot = new WeaponController(_levelController.Model.Weapons[1]); // Gun
             loot.ApplyEffect(_levelController.Model, _model);
         }
 
-        //private void CollectLoot(WeaponLootModel weaponLoot)
-        //{
-        //    weaponLoot.ApplyEffect();
-        //}
+        [ContextMenu("Test/OnPlayerCollisionWithBall")]
+        public void TestOnPlayerCollisionWithBall()
+        {
+            _model.LoseLife();
+        }
     }
 }

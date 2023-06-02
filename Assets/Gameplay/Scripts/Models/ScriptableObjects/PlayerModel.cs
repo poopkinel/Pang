@@ -31,6 +31,16 @@ namespace Gameplay.Models
             _weapon = weapon;
         }
 
+        public void GainLife()
+        {
+            _lives++;
+        }
+
+        public void LoseLife()
+        {
+            _lives--;
+        }
+
         #endregion
 
         #region Properties
