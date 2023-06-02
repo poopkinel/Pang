@@ -16,4 +16,10 @@ public class WeaponController : ILoot
     {
         playerModel.SetCurrentWeapon(_model);
     }
+
+    #region Proprties
+
+    public WeaponModel Model => _model;
+
+    #endregion
 }

@@ -17,16 +17,14 @@ namespace Gameplay.Controllers
         //[SerializeField]
         //private WeaponView weaponView;
 
-        [SerializeField]
-        private WeaponModel _testWeaponModel;
-
         private void Start()
         {
         }
 
-        [ContextMenu("Test/On Player Collision With Weapon Loot")]
-        public void OnPlayerCollideWithWeaponLoot(ILoot loot)
+        [ContextMenu("Test/OnPlayerCollisionWithWeaponLoot")]
+        public void OnPlayerCollideWithWeaponRandomLoot()
         {
+            WeaponController loot = new WeaponController(_levelController.Model.Weapons[1]); // Gun
             loot.ApplyEffect(_levelController.Model, _model);
         }
 
