@@ -17,10 +17,10 @@ namespace Gameplay.Models
         private Sprite _levelBackgroundImage;
 
         [SerializeField]
-        private LootBase[] _loots;
+        private LootType[] _levelLoots;
 
         [SerializeField]
-        private WeaponModel[] _weapons;
+        private WeaponModel[] _levelWeapons;
 
         public string LevelName => _name;
 
@@ -28,8 +28,8 @@ namespace Gameplay.Models
 
         public Sprite LevelBackgroundImage => _levelBackgroundImage;
 
-        public LootBase[] Loots => _loots;
+        public LootType[] Loots => _levelLoots;
 
-        public WeaponModel[] Weapons => _weapons;
+        public WeaponModel[] Weapons => _levelWeapons;
     }
 }
