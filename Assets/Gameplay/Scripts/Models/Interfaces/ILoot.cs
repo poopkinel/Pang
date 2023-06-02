@@ -4,7 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ILoot
+namespace Gameplay.Models
 {
-    public void ApplyEffect(LevelModel levelModel, PlayerModel playerModel);
+    public interface ILoot
+    {
+        public void ApplyEffect(LevelModel levelModel, PlayerModel playerModel);
+    }
 }
