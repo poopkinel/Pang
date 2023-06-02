@@ -18,7 +18,6 @@ public class LevelController : MonoBehaviour
         OnBallHit(arbitraryId, arbPositionDestroyed);
     }
 
-
     private void OnBallHit(int id, Vector2 positionHit)
     {
         var ball = _model.BallsModel.HitBall(id);
