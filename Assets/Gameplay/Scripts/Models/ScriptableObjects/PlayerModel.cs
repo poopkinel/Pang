@@ -8,6 +8,8 @@ namespace Gameplay.Models
     [CreateAssetMenu(menuName = "Pang Models/Player Model", fileName = "Player Model")]
     public class PlayerModel : ScriptableObject
     {
+        #region Editor
+
         [SerializeField]
         private string _name;
 
@@ -20,6 +22,19 @@ namespace Gameplay.Models
         [SerializeField]
         private WeaponModel _weapon;
 
+        #endregion
+
+        #region Public Methods
+
+        public void SetCurrentWeapon(WeaponModel weapon)
+        {
+            _weapon = weapon;
+        }
+
+        #endregion
+
+        #region Properties
+
         public string Name => _name;
 
         public int Score => _score;
@@ -27,5 +42,7 @@ namespace Gameplay.Models
         public int Lives => _lives;
 
         public WeaponModel Weapon => _weapon;
+
+        #endregion
     }
 }
