@@ -34,6 +34,16 @@ namespace Gameplay.Infrastructure.Input
 
         #region Unity Callbacks
 
+        private void Awake()
+        {
+            _players1Inputs.fire.ThisButton.onClick.AddListener(_player1.Fire);
+        }
+
+        private void OnDestroy()
+        {
+            _players1Inputs.fire.ThisButton.onClick.RemoveAllListeners();
+        }
+
         private void Update()
         {
             // Player 1
@@ -42,15 +52,10 @@ namespace Gameplay.Infrastructure.Input
                 _player1.MoveHorizontal(-1f);
             }
 
-            //if (_players1Inputs.right.IsPressed)
-            //{
-            //    _player1.MoveHorizontal(1f);
-            //}
-
-            //if (_players1Inputs.fire.IsPressed)
-            //{
-            //    _player1.Fire();
-            //}
+            if (_players1Inputs.right.IsPressed)
+            {
+                _player1.MoveHorizontal(1f);
+            }
 
 
             //// Player 2
