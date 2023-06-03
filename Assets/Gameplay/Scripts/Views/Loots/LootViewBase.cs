@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootViewBase : MonoBehaviour
+namespace Gameplay.Views
 {
-    // Start is called before the first frame update
-    void Start()
+    public class LootViewBase : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private LootType _type;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public LootType Type => _type;
     }
 }

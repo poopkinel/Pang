@@ -65,6 +65,11 @@ namespace Gameplay.Controllers
             Debug.Log($"Game over, try again");
         }
 
+        private void OnPlayerCollectsLoot(GameObject loot)
+        {
+
+        }
+
         #endregion
 
 
@@ -76,6 +81,7 @@ namespace Gameplay.Controllers
             _view.CollideWithBall += OnPlayerCollisionWithBall;
             _model.PlayerLoseLife += OnPlayerLoseLife;
             _model.PlayerLoseAllLives += OnPlayerLoseAllLives;
+            _view.CollideWithLoot += OnPlayerCollectsLoot;
         }
 
         private void OnDestroy()
@@ -83,6 +89,8 @@ namespace Gameplay.Controllers
             _view.CollideWithBall -= OnPlayerCollisionWithBall;
             _model.PlayerLoseLife -= OnPlayerLoseLife;
             _model.PlayerLoseAllLives -= OnPlayerLoseAllLives;
+            _view.CollideWithLoot -= OnPlayerCollectsLoot;
+
         }
 
         private void Start()

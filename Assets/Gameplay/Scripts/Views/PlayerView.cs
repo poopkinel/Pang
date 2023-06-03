@@ -12,6 +12,8 @@ namespace Gameplay.Views
 
         public Action CollideWithBall;
 
+        public Action<GameObject> CollideWithLoot;
+
         #endregion
 
         #region Editor
@@ -45,6 +47,11 @@ namespace Gameplay.Views
             if (collision.collider.CompareTag("Ball"))
             {
                 CollideWithBall?.Invoke();
+            }
+
+            else if (collision.collider.CompareTag("Loot"))
+            {
+                CollideWithLoot?.Invoke(collision.gameObject);
             }
         }
 
