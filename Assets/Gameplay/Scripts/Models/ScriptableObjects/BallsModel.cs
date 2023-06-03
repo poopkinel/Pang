@@ -54,5 +54,11 @@ namespace Gameplay.Models
         }
 
         #endregion
+
+        #region Properties
+
+        public bool AllBallsDestroyed => _balls.Count <= 0;
+
+        #endregion
     }
 }

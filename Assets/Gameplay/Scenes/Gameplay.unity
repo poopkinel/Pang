@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _model: {fileID: 11400000, guid: d3e3251a4a8c103409b2eab9db6ceeeb, type: 2}
+  _timer: {fileID: 1868607280}
 --- !u!1 &1868607279
 GameObject:
   m_ObjectHideFlags: 0

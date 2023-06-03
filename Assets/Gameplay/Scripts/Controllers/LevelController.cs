@@ -6,8 +6,17 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    #region Editor
+
     [SerializeField]
     private LevelModel _model;
+
+    [SerializeField]
+    private Timer _timer;
+
+    #endregion
+
+    #region Methods
 
     [ContextMenu("Test/On Projectile Hit With Ball")]
     public void TetsOnProjectileHitWithBall()
@@ -30,6 +39,30 @@ public class LevelController : MonoBehaviour
 
         _model.BallsModel.DestroyBall(id);
     }
+
+    private void OnTimerComplete()
+    {
+        if (!_model.BallsModel.AllBallsDestroyed)
+        {
+            Debug.Log("Level failed");
+        }
+    }
+
+    #endregion
+
+    #region Unity Callbacks
+
+    private void Awake()
+    {
+        _timer.TimerComplete += OnTimerComplete;
+    }
+
+    private void OnDestroy()
+    {
+        _timer.TimerComplete -= OnTimerComplete;
+    }
+
+    #endregion
 
     public LevelModel Model => _model;
 }
