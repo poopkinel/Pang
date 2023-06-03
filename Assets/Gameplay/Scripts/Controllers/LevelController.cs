@@ -71,11 +71,6 @@ namespace Gameplay.Controllers
             _ballsViewManager.DestroyBall(id);
         }
 
-        private void OnBallHitView(int id)
-        {
-
-        }
-
         private void OnTimerComplete()
         {
             if (!_runtimeBallsModel.IsAllBallsDestroyed)

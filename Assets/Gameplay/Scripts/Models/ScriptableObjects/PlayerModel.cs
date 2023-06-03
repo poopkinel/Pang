@@ -11,6 +11,7 @@ namespace Gameplay.Models
     {
         #region Events
 
+        public Action PlayerLoseLife;
         public Action PlayerLoseAllLives;
 
         #endregion
@@ -46,7 +47,12 @@ namespace Gameplay.Models
         public void LoseLife()
         {
             _lives--;
-            PlayerLoseAllLives?.Invoke();
+            PlayerLoseLife?.Invoke();
+
+            if (_lives <= 0)
+            {
+                PlayerLoseAllLives?.Invoke();
+            }
         }
 
         public void AddPoints(int points)

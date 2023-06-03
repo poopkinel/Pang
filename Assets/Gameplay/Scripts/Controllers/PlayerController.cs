@@ -9,6 +9,8 @@ namespace Gameplay.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
+        #region Editor
+
         [SerializeField]
         private PlayerModel _model;
 
@@ -21,20 +23,7 @@ namespace Gameplay.Controllers
         //[SerializeField]
         //private WeaponView weaponView;
 
-        private void Awake()
-        {
-            // Event Subscription
-            _view.CollideWithBall += OnPlayerCollisionWithBall;
-        }
-
-        private void OnDestroy()
-        {
-            _view.CollideWithBall -= OnPlayerCollisionWithBall;
-        }
-
-        private void Start()
-        {
-        }
+        #endregion
 
         #region Methods
 
@@ -64,6 +53,40 @@ namespace Gameplay.Controllers
         {
             int pointsToAdd = _levelController.Model.PointsForEachBallHit;
             _model.AddPoints(pointsToAdd);
+        }
+
+        private void OnPlayerLoseLife()
+        {
+            Debug.Log($"Player Lost Life");
+        }
+
+        private void OnPlayerLoseAllLives()
+        {
+            Debug.Log($"Game over, try again");
+        }
+
+        #endregion
+
+
+        #region Unity callbacks
+
+        private void Awake()
+        {
+            // Event Subscription
+            _view.CollideWithBall += OnPlayerCollisionWithBall;
+            _model.PlayerLoseLife += OnPlayerLoseLife;
+            _model.PlayerLoseAllLives += OnPlayerLoseAllLives;
+        }
+
+        private void OnDestroy()
+        {
+            _view.CollideWithBall -= OnPlayerCollisionWithBall;
+            _model.PlayerLoseLife -= OnPlayerLoseLife;
+            _model.PlayerLoseAllLives -= OnPlayerLoseAllLives;
+        }
+
+        private void Start()
+        {
         }
 
         #endregion
