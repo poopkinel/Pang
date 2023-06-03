@@ -3,25 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.Infrastructure
+namespace Gameplay.Infrastructure.Input
 {
     [System.Serializable]
-    struct PlayerButtonTriplet
+    public struct PlayerButtonTriplet
     {
         public InputButton right;
         public InputButton left;
         public InputButton fire;
     }
 
+
     public class MobileInputManager : InputManager
     {
         #region Editor
 
         [SerializeField]
-        private List<PlayerButtonTriplet> _playersButtons;
+        private PlayerButtonTriplet _players1Inputs;
 
         [SerializeField]
-        private List<PlayerView> _players = new List<PlayerView>();
+        private PlayerButtonTriplet _players2Inputs;
+
+        [SerializeField]
+        private PlayerView _player1;
+
+        [SerializeField]
+        private PlayerView _player2;
 
         #endregion
 
@@ -29,30 +36,48 @@ namespace Gameplay.Infrastructure
 
         private void Update()
         {
-            for (int i = 0; i < _players.Count; i++)
+            // Player 1
+            if (_players1Inputs.left.IsPressed)
             {
-                if (_playersButtons[i].left.Pressed)
-                {
-                    _players[i].MoveHorizontal(-1f);
-                }
-                if (_playersButtons[i].right.Pressed)
-                {
-                    _players[i].MoveHorizontal(1f);
-                }
-                if (_playersButtons[i].fire.Pressed)
-                {
-                    _players[i].Fire();
-                }
+                _player1.MoveHorizontal(-1f);
             }
+
+            //if (_players1Inputs.right.IsPressed)
+            //{
+            //    _player1.MoveHorizontal(1f);
+            //}
+
+            //if (_players1Inputs.fire.IsPressed)
+            //{
+            //    _player1.Fire();
+            //}
+
+
+            //// Player 2
+            //if (_players2Inputs.left.IsPressed)
+            //{
+            //    _player2.MoveHorizontal(-1f);
+            //}
+
+            //if (_players2Inputs.right.IsPressed)
+            //{
+            //    _player2.MoveHorizontal(1f);
+            //}
+
+            //if (_players2Inputs.fire.IsPressed)
+            //{
+            //    _player2.Fire();
+            //}
         }
 
         #endregion
 
         #region Methods
 
-        public override void SetPlayers(List<PlayerView> playerViews)
+        public override void SetPlayers(PlayerView player1, PlayerView player2)
         {
-            _players = playerViews;
+            _player1 = player1;
+            _player2 = player2;
         }
 
         public override void Move(PlayerView player, float horizontalAxis)
@@ -63,6 +88,14 @@ namespace Gameplay.Infrastructure
         {
             player.Fire();
         }
+
+        #endregion
+
+        #region Properties
+
+        public PlayerView Player1 => _player1;
+
+        public PlayerView Player2 => _player2;
 
         #endregion
     }
