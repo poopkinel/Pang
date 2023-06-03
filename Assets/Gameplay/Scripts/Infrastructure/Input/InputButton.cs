@@ -17,5 +17,5 @@ public class InputButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _pressed = false;
     }
 
-    public bool Pressed => _pressed;
+    public bool IsPressed => _pressed;
 }
