@@ -1,4 +1,5 @@
 using Gameplay.Models;
+using Gameplay.Views;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,12 @@ namespace Gameplay.Controllers
         private void Awake()
         {
             // Event Subscription
+            _view.CollideWithBall += OnPlayerCollisionWithBall;
+        }
+
+        private void OnDestroy()
+        {
+            _view.CollideWithBall -= OnPlayerCollisionWithBall;
         }
 
         private void Start()

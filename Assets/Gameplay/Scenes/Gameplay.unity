@@ -179,7 +179,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 63453153}
-  - component: {fileID: 63453152}
   m_Layer: 0
   m_Name: Player 2 Controller
   m_TagString: Untagged
@@ -187,21 +186,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &63453152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63453151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae93f9d5d0d10440a59156b7897eeac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _model: {fileID: 11400000, guid: 5dcb73e214b7f31428ca6e5370eeda86, type: 2}
-  _view: {fileID: 0}
-  _levelController: {fileID: 1416839716}
 --- !u!4 &63453153
 Transform:
   m_ObjectHideFlags: 0
@@ -1283,7 +1267,7 @@ MonoBehaviour:
     left: {fileID: 0}
     fire: {fileID: 0}
   _player1: {fileID: 59007304}
-  _player2: {fileID: 63453152}
+  _player2: {fileID: 0}
 --- !u!4 &722610387
 Transform:
   m_ObjectHideFlags: 0
