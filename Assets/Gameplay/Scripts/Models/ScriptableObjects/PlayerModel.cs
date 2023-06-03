@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,12 @@ namespace Gameplay.Models
     [CreateAssetMenu(menuName = "Pang Models/Player Model", fileName = "Player Model")]
     public class PlayerModel : ScriptableObject
     {
+        #region Events
+
+        public Action PlayerLoseAllLives;
+
+        #endregion
+
         #region Editor
 
         [SerializeField]
@@ -39,6 +46,7 @@ namespace Gameplay.Models
         public void LoseLife()
         {
             _lives--;
+            PlayerLoseAllLives?.Invoke();
         }
 
         public void AddPoints(int points)
