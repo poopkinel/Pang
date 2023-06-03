@@ -4,16 +4,43 @@ using UnityEngine;
 
 namespace Gameplay.Models
 {
-    public class Target
+    [System.Serializable]
+    public abstract class Target
     {
-        [SerializeField]
-        private int _hitsLeft;
+        protected static int lastId = 0;
+
+        #region Editor
 
         [SerializeField]
-        private bool _isDestroyed;
+        protected int _id;
 
-        public int HitsLeft => _hitsLeft;
+        [SerializeField]
+        protected int _hitsLeft;
 
-        public bool IsDestroyed => _isDestroyed;
+        [SerializeField]
+        protected Vector2 _spawnPosition;
+
+        #endregion
+
+        #region Constructor
+
+        public Target(int id, int hitsLeft, Vector2 SpawnPoint)
+        {
+            _id = id;
+            _hitsLeft = hitsLeft;
+            _spawnPosition = SpawnPoint;
+        }
+
+        #endregion
+
+        #region Properties
+
+        public virtual int Id => _id;
+
+        public virtual int HitsLeft => _hitsLeft;
+
+        public virtual bool IsLastHit => _hitsLeft == 0;
+
+        #endregion
     }
 }

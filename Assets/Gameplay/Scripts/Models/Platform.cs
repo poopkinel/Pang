@@ -1,19 +1,14 @@
+using Gameplay.Models;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
-namespace Gameplay.Models
+[System.Serializable]
+public class Platform : Target
 {
-    public class Platform
+    public Platform(int id, int hitsLeft, Vector2 SpawnPoint) : base(id, hitsLeft, SpawnPoint)
     {
-        [SerializeField]
-        private int _hitsLeft;
-
-        [SerializeField]
-        private bool _isDestroyed;
-
-        public int HitsLeft => _hitsLeft;
-
-        public bool IsDestroyed => _isDestroyed;
     }
 }
+

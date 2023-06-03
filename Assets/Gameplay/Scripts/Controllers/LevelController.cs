@@ -21,7 +21,7 @@ public class LevelController : MonoBehaviour
     [ContextMenu("Test/On Projectile Hit With Ball")]
     public void TetsOnProjectileHitWithBall()
     {
-        var arbitraryId = 0; // for testing
+        var arbitraryId = 1; // for testing
         var arbPositionDestroyed = Vector2.zero; // for testing
 
         OnBallHit(arbitraryId, arbPositionDestroyed);

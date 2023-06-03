@@ -60,7 +60,6 @@ namespace Gameplay.Models
             }
 
             var ball = GetBallById(id);
-            ball.Hit();
             return ball;
         }
 
