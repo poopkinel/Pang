@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay.Factories
+namespace Gameplay.Infrastructure.Factories
 {
     public abstract class LootFactory : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Gameplay.Factories
+namespace Gameplay.Infrastructure.Factories
 {
     public class WeaponLootFactory : LootFactory
     {

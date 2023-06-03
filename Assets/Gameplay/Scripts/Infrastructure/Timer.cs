@@ -4,82 +4,85 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+namespace Gameplay.Infrastructure
 {
-    #region Events
-
-    public Action<float> TimerTick;
-    public Action TimerComplete;
-
-    #endregion
-
-    #region Editor
-
-    [SerializeField]
-    private float _timerToSet;
-
-    [SerializeField]
-    private float _timeElapsed;
-
-    [SerializeField]
-    private bool _timerOn = false;
-
-    #endregion
-
-    #region Methods
-
-    public void SetStartTime(float timeToSet)
+    public class Timer : MonoBehaviour
     {
-        _timerToSet = timeToSet;
-    }
+        #region Events
 
-    public void AddTime(float timeToAdd)
-    {
-        _timeElapsed += timeToAdd;
-    }
+        public Action<float> TimerTick;
+        public Action TimerComplete;
 
-    [ContextMenu("Test/Start Timer")]
-    public void StartTimer()
-    {
-        _timeElapsed = _timerToSet;
-        _timerOn = true;
-    }
+        #endregion
 
-    public void StopTimer()
-    {
-        _timerOn = false;
-    }
+        #region Editor
 
-    #endregion
+        [SerializeField]
+        private float _timerToSet;
 
-    #region Unity Callbacks
+        [SerializeField]
+        private float _timeElapsed;
 
-    void Update()
-    {
-        if (!_timerOn)
-        { 
-            return; 
-        }
+        [SerializeField]
+        private bool _timerOn = false;
 
-        if (_timeElapsed <= 0)
+        #endregion
+
+        #region Methods
+
+        public void SetStartTime(float timeToSet)
         {
-            TimerComplete?.Invoke();
-            StopTimer();
-            return;
+            _timerToSet = timeToSet;
         }
 
-        _timeElapsed -= Time.deltaTime;
+        public void AddTime(float timeToAdd)
+        {
+            _timeElapsed += timeToAdd;
+        }
 
-        TimerTick?.Invoke(_timeElapsed);
+        [ContextMenu("Test/Start Timer")]
+        public void StartTimer()
+        {
+            _timeElapsed = _timerToSet;
+            _timerOn = true;
+        }
+
+        public void StopTimer()
+        {
+            _timerOn = false;
+        }
+
+        #endregion
+
+        #region Unity Callbacks
+
+        void Update()
+        {
+            if (!_timerOn)
+            {
+                return;
+            }
+
+            if (_timeElapsed <= 0)
+            {
+                TimerComplete?.Invoke();
+                StopTimer();
+                return;
+            }
+
+            _timeElapsed -= Time.deltaTime;
+
+            TimerTick?.Invoke(_timeElapsed);
+        }
+
+        #endregion
+
+        #region Properties
+
+        public float TimeElapsed => _timeElapsed;
+
+        public bool TimeUp => _timerToSet <= 0;
+
+        #endregion
     }
-
-    #endregion
-
-    #region Properties
-
-    public float TimeElapsed => _timeElapsed;
-
-    public bool TimeUp => _timerToSet <= 0;
-
-    #endregion
 }
