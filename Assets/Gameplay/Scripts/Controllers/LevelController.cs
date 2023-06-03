@@ -17,12 +17,9 @@ public class LevelController : MonoBehaviour
     private Timer _timer;
 
     [SerializeField]
-    private GameObject _ballPrefabRef;
+    private BallsViewManager _ballsViewManager;
 
-    [SerializeField]
-    private Transform _ballsParent;
-
-    [SerializeField]
+    //[SerializeField]
     private BallsModel _runtimeBallsModel;
 
     #endregion
@@ -56,11 +53,20 @@ public class LevelController : MonoBehaviour
 
         if (!ball.IsLastHit)
         {
-            _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
-            _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
+            int ballOneId = _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
+            int ballTwoId = _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
+
+            _ballsViewManager.Create(ballOneId, hitPosition);
+            _ballsViewManager.Create(ballTwoId, hitPosition);
         }
 
         _runtimeBallsModel.DestroyBall(id);
+        _ballsViewManager.DestroyBall(id);
+    }
+
+    private void OnBallHitView(int id)
+    {
+
     }
 
     private void OnTimerComplete()
@@ -90,7 +96,7 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        //Instantiate(_ballPrefabRef, _runtimeBallsModel.GetBallById(0).SpawnPoint, Quaternion.identity, _ballsParent);
+        
     }
 
     private void OnDestroy()

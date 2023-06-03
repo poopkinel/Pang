@@ -51,10 +51,11 @@ namespace Gameplay.Models
             }
         }
 
-        public void CreateBall(int hitsLeft, Vector2 position)
+        public int CreateBall(int hitsLeft, Vector2 position)
         {
             lastId = _balls.Max(b => b.Id) + 1;
             _balls.Add(new Ball(lastId, hitsLeft, position));
+            return lastId;
         }
 
         #endregion
