@@ -11,12 +11,14 @@ public class BallsViewManager : MonoBehaviour
     [SerializeField]
     private Transform _ballsParent;
 
-    private List<BallView> _ballViews;
+    [SerializeField]
+    private List<BallView> _ballViews = new ();
 
-    public void Create(int ballOneId, Vector2 spawnPosition)
+    public void Create(int ballId, Vector2 spawnPosition)
     {
-        var ball = Instantiate(_ballPrefabRef, spawnPosition, Quaternion.identity, _ballsParent);
-        _ballViews.Add(ball.GetComponent<BallView>());
+        var ball = Instantiate(_ballPrefabRef, spawnPosition, Quaternion.identity, _ballsParent).GetComponent<BallView>();
+        ball.SetId(ballId);
+        _ballViews.Add(ball);
     }
 
     public void DestroyBall(int id)

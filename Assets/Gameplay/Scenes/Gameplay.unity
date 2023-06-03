@@ -1485,6 +1485,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballPrefabRef: {fileID: 4015368274125202550, guid: b87c52aaf2c007447bad39e451e3f9ec, type: 3}
   _ballsParent: {fileID: 906878067}
+  _ballViews:
+  - {fileID: 1887656733}
+  - {fileID: 1318641690}
 --- !u!1 &948591524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,6 +2148,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4015368274125202549, guid: b87c52aaf2c007447bad39e451e3f9ec, type: 3}
   m_PrefabInstance: {fileID: 1318641683}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1318641690 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3578875423035922727, guid: b87c52aaf2c007447bad39e451e3f9ec, type: 3}
+  m_PrefabInstance: {fileID: 1318641683}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d337825eb38d3b64ab17fe7f930b2ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1394731627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,6 +2966,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 0
+--- !u!114 &1887656733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3578875423035922727, guid: b87c52aaf2c007447bad39e451e3f9ec, type: 3}
+  m_PrefabInstance: {fileID: 842594776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887656726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d337825eb38d3b64ab17fe7f930b2ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1917868819
 GameObject:
   m_ObjectHideFlags: 0
