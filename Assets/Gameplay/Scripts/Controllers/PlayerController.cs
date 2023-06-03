@@ -33,7 +33,9 @@ namespace Gameplay.Controllers
 
         public void Fire()
         {
-            _view.CreateProjectile(_model.Weapon.Prefab);
+            var projectile = _view.CreateProjectile(_model.Weapon.Prefab).GetComponent<ProjectileView>();
+            projectile.SetSpeed(_model.Weapon.ProjectileSpeed);
+
         }
 
         public void Move(float horizontal)

@@ -13,8 +13,13 @@ namespace Gameplay.Models
         [SerializeField]
         private string _name;
 
+        [SerializeField]
+        private float _projectileSpeed;
+
         public GameObject Prefab => _prefab;
 
         public string Name => _name;
+
+        public float ProjectileSpeed => _projectileSpeed;
     }
 }
