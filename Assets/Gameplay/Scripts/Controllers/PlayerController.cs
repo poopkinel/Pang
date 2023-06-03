@@ -12,16 +12,34 @@ namespace Gameplay.Controllers
         private PlayerModel _model;
 
         [SerializeField]
+        private PlayerView _view;
+
+        [SerializeField]
         private LevelController _levelController;
 
         //[SerializeField]
         //private WeaponView weaponView;
+
+        private void Awake()
+        {
+            // Event Subscription
+        }
 
         private void Start()
         {
         }
 
         #region Methods
+
+        public void Fire()
+        {
+            _view.CreateProjectile(_model.Weapon.Prefab);
+        }
+
+        public void Move(float horizontal)
+        {
+            _view.MoveHorizontal(horizontal);
+        }
 
         public void OnPlayerCollideWithWeaponRandomLoot(ILoot loot)
         {

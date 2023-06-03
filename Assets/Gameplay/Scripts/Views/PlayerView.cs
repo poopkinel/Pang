@@ -28,9 +28,9 @@ public class PlayerView : MonoBehaviour
 
     #region Methods
 
-    public void Fire()
+    public void CreateProjectile(GameObject weaponPrefab)
     {
-        Instantiate(_projectilePrefabRef, transform.position, Quaternion.identity, _projectileParent);
+        Instantiate(weaponPrefab, transform.position, Quaternion.identity, _projectileParent);
     }
 
     public void MoveHorizontal(float horizontalAxis)
