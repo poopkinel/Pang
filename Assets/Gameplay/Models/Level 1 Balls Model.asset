@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Level 1 Balls Model
   m_EditorClassIdentifier: 
   _balls:
-  - _id: 100
-    _hitsLeft: 4
-    _spawnPosition: {x: 2, y: 2}
+  - _id: 5
+    _hitsLeft: 0
+    _spawnPosition: {x: 0, y: 0}
+  - _id: 6
+    _hitsLeft: 2
+    _spawnPosition: {x: 0, y: 0}
+  - _id: 7
+    _hitsLeft: 2
+    _spawnPosition: {x: 0, y: 0}
