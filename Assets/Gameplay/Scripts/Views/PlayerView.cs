@@ -11,9 +11,22 @@ public class PlayerView : MonoBehaviour
     [SerializeField]
     private Transform _projectileParent;
 
+    [SerializeField]
+    private float _playerMoveSpeed;
+
     private Rigidbody2D _rigidbody;
 
-    private float _playerMoveSpeed;
+
+    #region Unity Callbacks
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    #endregion
+
+    #region Methods
 
     public void Fire()
     {
@@ -23,6 +36,21 @@ public class PlayerView : MonoBehaviour
     public void MoveHorizontal(float horizontalAxis)
     {
         var moveForce = horizontalAxis * _playerMoveSpeed * Time.deltaTime;
+        //_rigidbody.AddForce(new Vector2(moveForce, 0));
+        transform.Translate(new Vector2(moveForce, 0));
+    }
+
+    [ContextMenu("Test/Move left")]
+    public void MoveHorizontalLeft()
+    {
+        var moveForce = -1f * _playerMoveSpeed * Time.deltaTime;
+        _rigidbody.AddForce(new Vector2(moveForce, 0));
+    }
+    
+    [ContextMenu("Test/Move left")]
+    public void MoveHorizontalRight()
+    {
+        var moveForce = 1f * _playerMoveSpeed * Time.deltaTime;
         _rigidbody.AddForce(new Vector2(moveForce, 0));
     }
 
@@ -31,4 +59,6 @@ public class PlayerView : MonoBehaviour
     {
         Instantiate(_projectilePrefabRef, transform.position, Quaternion.identity, _projectileParent);
     }
+
+    #endregion
 }
