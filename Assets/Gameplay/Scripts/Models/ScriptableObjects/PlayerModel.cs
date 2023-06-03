@@ -14,6 +14,10 @@ namespace Gameplay.Models
         public Action PlayerLoseLife;
         public Action PlayerLoseAllLives;
 
+        public Action<string> UpdateWeaponName;
+        public Action<int> UpdateLives;
+        public Action<int> UpdatePoints;
+
         #endregion
 
         #region Editor
@@ -37,11 +41,20 @@ namespace Gameplay.Models
         public void SetCurrentWeapon(WeaponModel weapon)
         {
             _weapon = weapon;
+            UpdateWeaponName?.Invoke(_weapon.Name);
+        }
+
+        public void SetLives(int lives)
+        {
+            _lives = lives;
+            UpdateLives?.Invoke(_lives);
+
         }
 
         public void GainLife()
         {
             _lives++;
+            UpdateLives?.Invoke(_lives);
         }
 
         public void LoseLife()
@@ -53,11 +66,13 @@ namespace Gameplay.Models
             {
                 PlayerLoseAllLives?.Invoke();
             }
+            UpdateLives?.Invoke(_lives);
         }
 
         public void AddPoints(int points)
         {
             _score += points;
+            UpdatePoints?.Invoke(_score);
         }
 
         #endregion

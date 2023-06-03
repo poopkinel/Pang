@@ -3,6 +3,7 @@ using Gameplay.Views;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Gameplay.Controllers
@@ -16,6 +17,9 @@ namespace Gameplay.Controllers
 
         [SerializeField]
         private PlayerView _view;
+
+        [SerializeField]
+        private HUDView _hudView;
 
         [SerializeField]
         private LevelController _levelController;
@@ -89,7 +93,12 @@ namespace Gameplay.Controllers
             _model.PlayerLoseLife += OnPlayerLoseLife;
             _model.PlayerLoseAllLives += OnPlayerLoseAllLives;
             _view.CollideWithLoot += OnPlayerCollectsLoot;
+
+            _model.UpdateLives += _hudView.SetLivesText;
+            _model.UpdatePoints += _hudView.SetScoreText;
+            _model.UpdateWeaponName += _hudView.SetWeaponText;
         }
+
 
         private void OnDestroy()
         {
@@ -98,10 +107,17 @@ namespace Gameplay.Controllers
             _model.PlayerLoseAllLives -= OnPlayerLoseAllLives;
             _view.CollideWithLoot -= OnPlayerCollectsLoot;
 
+            _model.UpdateLives -= _hudView.SetLivesText;
+            _model.UpdatePoints -= _hudView.SetScoreText;
+            _model.UpdateWeaponName -= _hudView.SetWeaponText;
+
         }
 
         private void Start()
         {
+            _hudView.SetLivesText(_model.Lives);
+            _hudView.SetScoreText(_model.Score);
+            _hudView.SetWeaponText(_model.Weapon.Name);
         }
 
         #endregion
