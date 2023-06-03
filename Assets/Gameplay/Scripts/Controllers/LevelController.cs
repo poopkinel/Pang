@@ -51,13 +51,16 @@ public class LevelController : MonoBehaviour
     {
         var ball = _runtimeBallsModel.GetBallById(id);
 
+        Vector2 startForceRight = new Vector2(1f, 0.2f) * 100000;
+        Vector2 startForceLeft = new Vector2(-1f, 0.2f) * 100000;
+
         if (!ball.IsLastHit)
         {
             int ballOneId = _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
             int ballTwoId = _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
 
-            _ballsViewManager.Create(ballOneId, hitPosition);
-            _ballsViewManager.Create(ballTwoId, hitPosition);
+            _ballsViewManager.Create(ballOneId, hitPosition, startForceRight);
+            _ballsViewManager.Create(ballTwoId, hitPosition, startForceLeft);
         }
 
         _runtimeBallsModel.DestroyBall(id);
