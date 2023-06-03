@@ -29,13 +29,13 @@ public class ProjectileView : MonoBehaviour
 
     void Update()
     {
-        _rigidbody.AddForce(transform.up * _speed * Time.deltaTime);
+        _rigidbody.AddForce(new Vector2(0f, _speed * Time.deltaTime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var other = collision.otherCollider;
-        if (other.CompareTag("Player"))
+        var other = collision.collider;
+        if (other.CompareTag("Player") || other.CompareTag("Projectile"))
         {
             return;
         }

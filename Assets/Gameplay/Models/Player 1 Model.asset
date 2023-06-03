@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Player 1
   _score: 0
-  _lives: 3
+  _lives: 15
   _weapon: {fileID: 11400000, guid: ec15a980741967146b3ba4ea6e017b19, type: 2}
