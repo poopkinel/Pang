@@ -38,6 +38,7 @@ namespace Gameplay.Views
         public void DestroyBall(int id)
         {
             var ball = _ballViews.Find(b => b.Id == id);
+            _ballViews.Remove(ball);
             Destroy(ball.gameObject);
         }
     }

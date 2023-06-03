@@ -20,10 +20,10 @@ namespace Gameplay.Infrastructure.Input
         #region Editor
 
         [SerializeField]
-        private PlayerButtonTriplet _players1Inputs;
+        private PlayerButtonTriplet _player1Inputs;
 
         [SerializeField]
-        private PlayerButtonTriplet _players2Inputs;
+        private PlayerButtonTriplet _player2Inputs;
 
         [SerializeField]
         private PlayerController _player1;
@@ -37,23 +37,23 @@ namespace Gameplay.Infrastructure.Input
 
         private void Awake()
         {
-            _players1Inputs.fire.ThisButton.onClick.AddListener(_player1.Fire);
+            _player1Inputs.fire.ThisButton.onClick.AddListener(_player1.Fire);
         }
 
         private void OnDestroy()
         {
-            _players1Inputs.fire.ThisButton.onClick.RemoveAllListeners();
+            _player1Inputs.fire.ThisButton.onClick.RemoveAllListeners();
         }
 
         private void Update()
         {
             // Player 1
-            if (_players1Inputs.left.IsPressed)
+            if (_player1Inputs.left.IsPressed)
             {
                 _player1.Move(-1f);
             }
 
-            if (_players1Inputs.right.IsPressed)
+            if (_player1Inputs.right.IsPressed)
             {
                 _player1.Move(1f);
             }

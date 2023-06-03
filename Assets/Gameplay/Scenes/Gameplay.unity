@@ -483,6 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3936ac6752e61a84eb16e68b8c550df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 214860655}
 --- !u!1 &249312568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,11 +1304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49eb5c310cec6045b52bad5a0fcc67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _players1Inputs:
+  _player1Inputs:
     right: {fileID: 1564703393}
     left: {fileID: 214860658}
     fire: {fileID: 1917868821}
-  _players2Inputs:
+  _player2Inputs:
     right: {fileID: 0}
     left: {fileID: 0}
     fire: {fileID: 0}
@@ -2559,6 +2560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3936ac6752e61a84eb16e68b8c550df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 1564703394}
 --- !u!114 &1564703394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2857,6 +2859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3936ac6752e61a84eb16e68b8c550df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 1917868822}
 --- !u!114 &1917868822
 MonoBehaviour:
   m_ObjectHideFlags: 0

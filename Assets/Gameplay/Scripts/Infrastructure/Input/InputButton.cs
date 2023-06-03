@@ -9,6 +9,7 @@ namespace Gameplay.Infrastructure.Input
     [RequireComponent(typeof(Button))]
     public class InputButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        [SerializeField]
         private Button _button;
 
         private bool _pressed;
@@ -21,11 +22,6 @@ namespace Gameplay.Infrastructure.Input
         public void OnPointerUp(PointerEventData eventData)
         {
             _pressed = false;
-        }
-
-        private void Awake()
-        {
-            _button = GetComponent<Button>();
         }
 
         public bool IsPressed => _pressed;
