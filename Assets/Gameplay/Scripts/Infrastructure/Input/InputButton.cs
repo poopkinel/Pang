@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Gameplay.Infrastructure.Input
 {
     [RequireComponent(typeof(Button))]
-    public class InputButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
+    public class InputButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         private Button _button;
 
