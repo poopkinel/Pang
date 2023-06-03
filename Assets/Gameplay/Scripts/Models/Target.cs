@@ -41,6 +41,8 @@ namespace Gameplay.Models
 
         public virtual bool IsLastHit => _hitsLeft == 0;
 
+        public virtual Vector2 SpawnPoint => _spawnPosition;
+
         #endregion
     }
 }

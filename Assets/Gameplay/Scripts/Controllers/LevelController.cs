@@ -16,6 +16,15 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     private Timer _timer;
 
+    [SerializeField]
+    private GameObject _ballPrefabRef;
+
+    [SerializeField]
+    private Transform _ballsParent;
+
+    [SerializeField]
+    private BallsModel _runtimeBallsModel;
+
     #endregion
 
     #region Methods
@@ -43,20 +52,20 @@ public class LevelController : MonoBehaviour
 
     private void OnBallHit(int id, Vector2 hitPosition)
     {
-        var ball = _model.BallsModel.HitBall(id);
+        var ball = _runtimeBallsModel.GetBallById(id);
 
         if (!ball.IsLastHit)
         {
-            _model.BallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
-            _model.BallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
+            _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
+            _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
         }
 
-        _model.BallsModel.DestroyBall(id);
+        _runtimeBallsModel.DestroyBall(id);
     }
 
     private void OnTimerComplete()
     {
-        if (!_model.BallsModel.IsAllBallsDestroyed)
+        if (!_runtimeBallsModel.IsAllBallsDestroyed)
         {
             Debug.Log("Level failed");
         }
@@ -73,14 +82,23 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
+        _runtimeBallsModel = Instantiate(_model.BallsModel); // Instantiate SO to have a runtime copy of the data
+
         _timer.TimerComplete += OnTimerComplete;
-        _model.BallsModel.AllBallsDestroyed += OnAllBallsDestroyed;
+        _runtimeBallsModel.AllBallsDestroyed += OnAllBallsDestroyed;
+    }
+
+    private void Start()
+    {
+        //Instantiate(_ballPrefabRef, _runtimeBallsModel.GetBallById(0).SpawnPoint, Quaternion.identity, _ballsParent);
     }
 
     private void OnDestroy()
     {
         _timer.TimerComplete -= OnTimerComplete;
-        _model.BallsModel.AllBallsDestroyed -= OnAllBallsDestroyed;
+        _runtimeBallsModel.AllBallsDestroyed -= OnAllBallsDestroyed;
+
+        Destroy(_runtimeBallsModel);
     }
 
     #endregion

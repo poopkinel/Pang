@@ -32,6 +32,11 @@ namespace Gameplay.Models
 
         public Ball GetBallById(int id)
         {
+            if (_balls.Count(b => b.Id == id) == 0)
+            {
+                throw new ArgumentException("No such ball id in level");
+            }
+
             return _balls.Find(b => b.Id == id);
         }
         
@@ -50,17 +55,6 @@ namespace Gameplay.Models
         {
             lastId = _balls.Max(b => b.Id) + 1;
             _balls.Add(new Ball(lastId, hitsLeft, position));
-        }
-
-        public Ball HitBall(int id)
-        {
-            if (_balls.Count(b => b.Id == id) == 0)
-            {
-                throw new ArgumentException("No such ball id in level");
-            }
-
-            var ball = GetBallById(id);
-            return ball;
         }
 
         #endregion
