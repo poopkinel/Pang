@@ -1,3 +1,4 @@
+using Gameplay.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,6 +52,7 @@ namespace Gameplay.Views
 
             else if (collision.collider.CompareTag("Loot"))
             {
+                Debug.Log($"collider with loot");
                 CollideWithLoot?.Invoke(collision.gameObject);
             }
         }

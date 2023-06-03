@@ -15,6 +15,7 @@ namespace Gameplay.Infrastructure.Factories
         {
             var possibleWeapons = _levelModel.Weapons;
             var weaponIndex = Random.Range(0, possibleWeapons.Length);
+            Debug.Log($"weapon index: {weaponIndex}");
             var weapon = new WeaponController(possibleWeapons[weaponIndex]);
             return weapon;
         }

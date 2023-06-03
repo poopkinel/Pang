@@ -39,9 +39,14 @@ namespace Gameplay.Controllers
             _view.MoveHorizontal(horizontal);
         }
 
+        public void SetCurrentWeapon(WeaponModel model)
+        {
+            Model.SetCurrentWeapon(model);
+        }
+
         public void OnPlayerCollideWithWeaponRandomLoot(ILoot loot)
         {
-            loot.ApplyEffect(_levelController.Model, _model);
+            loot.ApplyEffect(_levelController, this);
         }
 
         public void OnPlayerCollisionWithBall()
@@ -65,9 +70,11 @@ namespace Gameplay.Controllers
             Debug.Log($"Game over, try again");
         }
 
-        private void OnPlayerCollectsLoot(GameObject loot)
+        private void OnPlayerCollectsLoot(GameObject lootGO)
         {
-
+            var loot = lootGO.GetComponent<LootViewBase>();
+            Debug.Log($"loot collected: {loot.Type}");
+            loot.Model.ApplyEffect(_levelController, this);
         }
 
         #endregion
@@ -105,7 +112,7 @@ namespace Gameplay.Controllers
         public void TestOnPlayerCollideWithWeaponRandomLoot()
         {
             WeaponController loot = new WeaponController(_levelController.Model.Weapons[1]); // Gun
-            loot.ApplyEffect(_levelController.Model, _model);
+            loot.ApplyEffect(_levelController, this);
         }
 
         [ContextMenu("Test/On Player Collision With Ball")]
@@ -120,6 +127,12 @@ namespace Gameplay.Controllers
             int pointsToAdd = _levelController.Model.PointsForEachBallHit;
             _model.AddPoints(pointsToAdd);
         }
+
+        #endregion
+
+        #region Properties
+
+        public PlayerModel Model => _model;
 
         #endregion
     }

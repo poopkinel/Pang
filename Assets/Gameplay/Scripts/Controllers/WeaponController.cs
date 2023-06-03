@@ -1,3 +1,4 @@
+using Gameplay.Controllers;
 using Gameplay.Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,14 +13,16 @@ public class WeaponController : ILoot
         _model = model;
     }
 
-    public void ApplyEffect(LevelModel levelModel, PlayerModel playerModel)
+    public void ApplyEffect(LevelController levelController, PlayerController playerController)
     {
-        playerModel.SetCurrentWeapon(_model);
+        playerController.SetCurrentWeapon(_model);
     }
 
     #region Proprties
 
     public WeaponModel Model => _model;
+
+    public LootType LootType => LootType.Weapon;
 
     #endregion
 }

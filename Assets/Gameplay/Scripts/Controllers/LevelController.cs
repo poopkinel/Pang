@@ -1,4 +1,5 @@
 using Gameplay.Infrastructure;
+using Gameplay.Infrastructure.Factories;
 using Gameplay.Models;
 using Gameplay.Views;
 using General.Models;
@@ -6,7 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 
 namespace Gameplay.Controllers
 {
@@ -23,8 +24,15 @@ namespace Gameplay.Controllers
         [SerializeField]
         private BallsViewManager _ballsViewManager;
 
+        [SerializeField]
+        private LootsViewManager _lootsViewManager;
+
+        [SerializeField]
+        private List<LootFactory> _lootFactories;
+
         //[SerializeField]
         private BallsModel _runtimeBallsModel;
+
 
         #endregion
 
@@ -52,6 +60,24 @@ namespace Gameplay.Controllers
         }
 
         private void OnBallHit(int id, Vector2 hitPosition)
+        {
+            HandleLootCreation(id, hitPosition);
+            HandleBallCreateAndDestroy(id, hitPosition);
+        }
+
+        private void HandleLootCreation(int id, Vector2 hitPosition)
+        {
+            var ball = _runtimeBallsModel.GetBallById(id);
+
+            if (Random.Range(0, 1) > 0.1f) // Chance to get a loot
+            {
+                var factIndx = Random.Range(0, _lootFactories.Count);
+                var loot = _lootFactories[factIndx].Create(hitPosition);
+                _lootsViewManager.Create(loot, hitPosition);
+            }
+        }
+
+        private void HandleBallCreateAndDestroy(int id, Vector2 hitPosition)
         {
             var ball = _runtimeBallsModel.GetBallById(id);
 

@@ -1,3 +1,4 @@
+using Gameplay.Controllers;
 using Gameplay.Models;
 using General.Models;
 using System.Collections;
@@ -8,6 +9,8 @@ namespace Gameplay.Models
 {
     public interface ILoot
     {
-        public void ApplyEffect(LevelModel levelModel, PlayerModel playerModel);
+        public void ApplyEffect(LevelController levelModel, PlayerController playerModel);
+
+        public LootType LootType { get; }
     }
 }
