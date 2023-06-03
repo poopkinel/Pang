@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _balls:
   - _id: 0
-    _hitsLeft: 2
+    _hitsLeft: 0
     _spawnPosition: {x: 0, y: 0}
   - _id: 1
     _hitsLeft: 3

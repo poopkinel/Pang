@@ -35,7 +35,7 @@ namespace Gameplay.Controllers
         {
             var projectile = _view.CreateProjectile(_model.Weapon.Prefab).GetComponent<ProjectileView>();
             projectile.SetSpeed(_model.Weapon.ProjectileSpeed);
-            projectile.ProjectileHit += OnProjectileHit;
+            projectile.ProjectileHit += _levelController.OnProjectileHit;
         }
 
         public void Move(float horizontal)
@@ -51,18 +51,6 @@ namespace Gameplay.Controllers
         public void OnPlayerCollisionWithBall()
         {
             _model.LoseLife();
-        }
-
-        public void OnProjectileHit(ProjectileView projView, GameObject collidingGO, Vector2 hitPosition)
-        {
-            //var ball = collidingGO.GetComponent<BallView>();
-            //if (ball != null)
-            //{
-            //    OnPlayerCollisionWithBall(ball.Id);
-            //}
-            
-            projView.ProjectileHit -= OnProjectileHit;
-            Destroy(projView.gameObject);
         }
 
         public void OnProjectileHitWithBall(int ballId)

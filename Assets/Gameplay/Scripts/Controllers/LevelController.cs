@@ -1,6 +1,7 @@
 using Gameplay.Infrastructure;
 using Gameplay.Models;
 using General.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,14 +29,26 @@ public class LevelController : MonoBehaviour
         OnBallHit(arbitraryId, arbPositionDestroyed);
     }
 
-    private void OnBallHit(int id, Vector2 positionHit)
+    public void OnProjectileHit(ProjectileView projView, GameObject hitGO, Vector2 hitPosition)
+    {
+        var ball = hitGO.GetComponent<BallView>();
+        if (ball != null)
+        {
+            OnBallHit(ball.Id, hitPosition);
+        }
+
+        projView.ProjectileHit -= OnProjectileHit;
+        Destroy(projView.gameObject);
+    }
+
+    private void OnBallHit(int id, Vector2 hitPosition)
     {
         var ball = _model.BallsModel.HitBall(id);
 
         if (!ball.IsLastHit)
         {
-            _model.BallsModel.CreateBall(ball.HitsLeft - 1, positionHit);
-            _model.BallsModel.CreateBall(ball.HitsLeft - 1, positionHit);
+            _model.BallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
+            _model.BallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
         }
 
         _model.BallsModel.DestroyBall(id);
@@ -73,4 +86,5 @@ public class LevelController : MonoBehaviour
     #endregion
 
     public LevelModel Model => _model;
+
 }
