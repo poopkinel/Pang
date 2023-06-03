@@ -13,6 +13,6 @@ public class PlayerView : MonoBehaviour
     [ContextMenu("Test/Shoot Projectile")]
     private void TestShoot()
     {
-        Instantiate(_projectilePrefabRef, _projectileParent);
+        Instantiate(_projectilePrefabRef, transform.position, Quaternion.identity, _projectileParent);
     }
 }
