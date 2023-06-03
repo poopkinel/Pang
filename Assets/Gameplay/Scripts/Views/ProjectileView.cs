@@ -8,7 +8,7 @@ public class ProjectileView : MonoBehaviour
 {
     #region Events
 
-    public Action<GameObject, Vector2> ProjectileHit;
+    public Action<ProjectileView, GameObject, Vector2> ProjectileHit;
 
     #endregion
 
@@ -43,9 +43,7 @@ public class ProjectileView : MonoBehaviour
         var xHit = collision.contacts[0].point.x;
         var yHiy = collision.contacts[0].point.y;
 
-        ProjectileHit?.Invoke(other.gameObject, new Vector2(xHit, yHiy));
-
-        Destroy(gameObject);
+        ProjectileHit?.Invoke(this, other.gameObject, new Vector2(xHit, yHiy));
     }
 
     #endregion
