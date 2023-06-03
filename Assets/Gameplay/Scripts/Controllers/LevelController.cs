@@ -21,7 +21,7 @@ public class LevelController : MonoBehaviour
     [ContextMenu("Test/On Projectile Hit With Ball")]
     public void TetsOnProjectileHitWithBall()
     {
-        var arbitraryId = 4; // for testing
+        var arbitraryId = 0; // for testing
         var arbPositionDestroyed = Vector2.zero; // for testing
 
         OnBallHit(arbitraryId, arbPositionDestroyed);
@@ -31,7 +31,7 @@ public class LevelController : MonoBehaviour
     {
         var ball = _model.BallsModel.HitBall(id);
 
-        if (!ball.IsSmallest)
+        if (!ball.IsLastHit)
         {
             _model.BallsModel.CreateBall(ball.HitsLeft - 1, positionHit);
             _model.BallsModel.CreateBall(ball.HitsLeft - 1, positionHit);
@@ -42,10 +42,15 @@ public class LevelController : MonoBehaviour
 
     private void OnTimerComplete()
     {
-        if (!_model.BallsModel.AllBallsDestroyed)
+        if (!_model.BallsModel.IsAllBallsDestroyed)
         {
             Debug.Log("Level failed");
         }
+    }
+
+    private void OnAllBallsDestroyed()
+    {
+        Debug.Log($"Level complete!");
     }
 
     #endregion
@@ -55,11 +60,13 @@ public class LevelController : MonoBehaviour
     private void Awake()
     {
         _timer.TimerComplete += OnTimerComplete;
+        _model.BallsModel.AllBallsDestroyed += OnAllBallsDestroyed;
     }
 
     private void OnDestroy()
     {
         _timer.TimerComplete -= OnTimerComplete;
+        _model.BallsModel.AllBallsDestroyed -= OnAllBallsDestroyed;
     }
 
     #endregion

@@ -15,6 +15,12 @@ namespace Gameplay.Models
 
         #endregion
 
+        #region Events
+
+        public Action AllBallsDestroyed;
+
+        #endregion
+
         #region Editor
 
         [SerializeField]
@@ -33,6 +39,11 @@ namespace Gameplay.Models
         {
             var ball = GetBallById(id);
             _balls.Remove(ball);
+
+            if (IsAllBallsDestroyed)
+            {
+                AllBallsDestroyed?.Invoke();
+            }
         }
 
         public void CreateBall(int hitsLeft, Vector2 position)
@@ -57,7 +68,7 @@ namespace Gameplay.Models
 
         #region Properties
 
-        public bool AllBallsDestroyed => _balls.Count <= 0;
+        public bool IsAllBallsDestroyed => _balls.Count <= 0;
 
         #endregion
     }
