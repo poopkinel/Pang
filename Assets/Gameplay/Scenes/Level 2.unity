@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3260033430471834301, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.77488184
+      value: 0.8748818
       objectReference: {fileID: 0}
     - target: {fileID: 3260033430471834301, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
       propertyPath: m_AnchorMin.x
@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3260033430471834301, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3260033430471834301, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1381,7 +1381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5963829867427861801, guid: bfa9cd6c6bf3fcb40ade36453961f2ea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.84849095
+      value: 0.948491
       objectReference: {fileID: 0}
     - target: {fileID: 5963829867427861801, guid: bfa9cd6c6bf3fcb40ade36453961f2ea, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1389,7 +1389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5963829867427861801, guid: bfa9cd6c6bf3fcb40ade36453961f2ea, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5963829867427861801, guid: bfa9cd6c6bf3fcb40ade36453961f2ea, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1635,7 +1635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3260033430471834301, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.77488184
+      value: 0.8748818
       objectReference: {fileID: 0}
     - target: {fileID: 3260033430471834301, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1643,7 +1643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3260033430471834301, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3260033430471834301, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2929,6 +2929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _model: {fileID: 11400000, guid: 9ffd5faaeae7b6542b716713f0cf35a6, type: 2}
+  _gameModel: {fileID: 11400000, guid: 79c6765f6f65ae34f8de67ce5f7a1116, type: 2}
   _timer: {fileID: 1868607280}
   _ballsViewManager: {fileID: 906878068}
   _lootsViewManager: {fileID: 1064271580}

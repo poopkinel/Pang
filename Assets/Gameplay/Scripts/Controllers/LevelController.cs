@@ -6,6 +6,7 @@ using General.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,6 +20,9 @@ namespace Gameplay.Controllers
 
         [SerializeField]
         private LevelModel _model;
+
+        [SerializeField]
+        private GameModel _gameModel;
 
         [SerializeField]
         private Timer _timer;
@@ -119,7 +123,7 @@ namespace Gameplay.Controllers
 
         private void OnAllBallsDestroyed()
         {
-            Debug.Log($"Level complete!");
+            new EnterNextLevelFlow(_gameModel, _model).Execute();
         }
 
         private void OnBackButtonClicked()
@@ -162,5 +166,6 @@ namespace Gameplay.Controllers
 
         public LevelModel Model => _model;
 
+        public GameModel ThisGameModel => _gameModel;
     }
 }
