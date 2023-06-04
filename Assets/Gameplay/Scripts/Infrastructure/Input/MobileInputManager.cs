@@ -38,11 +38,13 @@ namespace Gameplay.Infrastructure.Input
         private void Awake()
         {
             _player1Inputs.fire.ThisButton.onClick.AddListener(_player1.Fire);
+            _player2Inputs.fire.ThisButton.onClick.AddListener(_player2.Fire);
         }
 
         private void OnDestroy()
         {
             _player1Inputs.fire.ThisButton.onClick.RemoveAllListeners();
+            _player2Inputs.fire.ThisButton.onClick.RemoveAllListeners();
         }
 
         private void Update()
@@ -60,20 +62,15 @@ namespace Gameplay.Infrastructure.Input
 
 
             //// Player 2
-            //if (_players2Inputs.left.IsPressed)
-            //{
-            //    _player2.MoveHorizontal(-1f);
-            //}
+            if (_player2Inputs.left.IsPressed)
+            {
+                _player2.Move(-1f);
+            }
 
-            //if (_players2Inputs.right.IsPressed)
-            //{
-            //    _player2.MoveHorizontal(1f);
-            //}
-
-            //if (_players2Inputs.fire.IsPressed)
-            //{
-            //    _player2.Fire();
-            //}
+            if (_player2Inputs.right.IsPressed)
+            {
+                _player2.Move(1f);
+            }
         }
 
         #endregion
