@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86770555c82482488da43e9654a07fa, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  _name: 
-  _targets: []
-  _platforms: []
-  _timeToFinish: 0
+  _name: Level 3
+  _ballsModel: {fileID: 11400000, guid: 8ccdf4f82d8b5cf4882d022c083e64e2, type: 2}
+  _timeToFinish: 80
   _levelBackgroundImage: {fileID: 0}
-  _loots: []
-  _weapons: []
+  _levelLoots: 000000000100000002000000
+  _levelWeapons:
+  - {fileID: 11400000, guid: ec15a980741967146b3ba4ea6e017b19, type: 2}
+  - {fileID: 11400000, guid: 5985cc97d1ddf4f4eb96077cae45bd1d, type: 2}
+  _pointsForEachBallHit: 300
+  _sceneIndex: 4
