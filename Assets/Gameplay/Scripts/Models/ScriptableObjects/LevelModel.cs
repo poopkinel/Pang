@@ -41,5 +41,7 @@ namespace Gameplay.Models
         public WeaponModel[] Weapons => _levelWeapons;
 
         public int PointsForEachBallHit => _pointsForEachBallHit;
+
+        public int SceneIndex { get; internal set; }
     }
 }
