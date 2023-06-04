@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Gameplay.Controllers
@@ -29,6 +30,10 @@ namespace Gameplay.Controllers
 
         [SerializeField]
         private List<LootFactory> _lootFactories;
+
+        [Header("UI Button")]
+        [SerializeField]
+        private Button _backButton;
 
         //[SerializeField]
         private BallsModel _runtimeBallsModel;
@@ -110,6 +115,12 @@ namespace Gameplay.Controllers
             Debug.Log($"Level complete!");
         }
 
+        private void OnBackButtonClicked()
+        {
+            // stop level (timers, reset data, etc.)
+            new FromGameplayToStartScreenFlow().Execute();
+        }
+
         #endregion
 
         #region Unity Callbacks
@@ -120,6 +131,8 @@ namespace Gameplay.Controllers
 
             _timer.TimerComplete += OnTimerComplete;
             _runtimeBallsModel.AllBallsDestroyed += OnAllBallsDestroyed;
+
+            _backButton.onClick.AddListener(OnBackButtonClicked);
         }
 
         private void Start()
@@ -133,6 +146,9 @@ namespace Gameplay.Controllers
             _runtimeBallsModel.AllBallsDestroyed -= OnAllBallsDestroyed;
 
             Destroy(_runtimeBallsModel);
+
+            _backButton.onClick.RemoveAllListeners();
+
         }
 
         #endregion
