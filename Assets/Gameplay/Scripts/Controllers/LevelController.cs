@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -43,13 +44,19 @@ namespace Gameplay.Controllers
 
         #region Methods
 
+        public void RestartLevel()
+        {
+            Debug.Log("Restart Level");
+            SceneManager.LoadScene(_model.SceneIndex);
+        }
+
         [ContextMenu("Test/On Projectile Hit With Ball")]
         public void TetsOnProjectileHitWithBall()
         {
             var arbitraryId = 1; // for testing
             var arbPositionDestroyed = Vector2.zero; // for testing
 
-            OnBallHit(arbitraryId, arbPositionDestroyed);
+            OnBallHitByProjectile(arbitraryId, arbPositionDestroyed);
         }
 
         public void OnProjectileHit(ProjectileView projView, GameObject hitGO, Vector2 hitPosition)
@@ -57,14 +64,14 @@ namespace Gameplay.Controllers
             var ball = hitGO.GetComponent<BallView>();
             if (ball != null)
             {
-                OnBallHit(ball.Id, hitPosition);
+                OnBallHitByProjectile(ball.Id, hitPosition);
             }
 
             projView.ProjectileHit -= OnProjectileHit;
             Destroy(projView.gameObject);
         }
 
-        private void OnBallHit(int id, Vector2 hitPosition)
+        private void OnBallHitByProjectile(int id, Vector2 hitPosition)
         {
             HandleLootCreation(id, hitPosition);
             HandleBallCreateAndDestroy(id, hitPosition);
@@ -118,7 +125,7 @@ namespace Gameplay.Controllers
         private void OnBackButtonClicked()
         {
             // stop level (timers, reset data, etc.)
-            new FromGameplayToStartScreenFlow().Execute();
+            new FromGameplayToStartScreenFlow(_model).Execute();
         }
 
         #endregion

@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5985cc97d1ddf4f4eb96077cae45bd1d, type: 2}
   - {fileID: 11400000, guid: ec15a980741967146b3ba4ea6e017b19, type: 2}
   _pointsForEachBallHit: 100
+  _sceneIndex: 2

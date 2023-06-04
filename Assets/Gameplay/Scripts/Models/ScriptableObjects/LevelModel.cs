@@ -28,6 +28,9 @@ namespace Gameplay.Models
         [SerializeField]
         private int _pointsForEachBallHit;
 
+        [SerializeField]
+        private int _sceneIndex;
+
         public string LevelName => _name;
 
         public BallsModel BallsModel => _ballsModel;
@@ -42,6 +45,6 @@ namespace Gameplay.Models
 
         public int PointsForEachBallHit => _pointsForEachBallHit;
 
-        public int SceneIndex { get; internal set; }
+        public int SceneIndex => _sceneIndex;
     }
 }

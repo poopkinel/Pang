@@ -20,7 +20,7 @@ public class EnterLevelFlow : IFlow
 
     public void Execute()
     {
-        SceneManager.LoadScene(SystemSceneIndexes.GAMEPLAY);
+        SceneManager.LoadScene(_gameModel.Levels[0].SceneIndex);
         _gameModel.SetPlayers(_players);
         SceneManager.UnloadSceneAsync(SystemSceneIndexes.MULTIPLAYER);
     }

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Gameplay.Models;
 using Gameplay.Views;
 using System;
@@ -67,6 +68,7 @@ namespace Gameplay.Controllers
         private void OnPlayerLoseLife()
         {
             Debug.Log($"Player Lost Life");
+            _levelController.RestartLevel();
         }
 
         private void OnPlayerLoseAllLives()
