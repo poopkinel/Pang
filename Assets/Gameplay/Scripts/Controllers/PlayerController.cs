@@ -59,7 +59,7 @@ namespace Gameplay.Controllers
             _model.LoseLife();
         }
 
-        public void OnProjectileHitWithBall(int ballId)
+        public void OnAddScore()
         {
             int pointsToAdd = _levelController.Model.PointsForEachBallHit;
             _model.AddPoints(pointsToAdd);
@@ -96,6 +96,8 @@ namespace Gameplay.Controllers
             _model.PlayerLoseAllLives += OnPlayerLoseAllLives;
             _view.CollideWithLoot += OnPlayerCollectsLoot;
 
+            _levelController.AddScore += OnAddScore;
+
             _model.UpdateLives += _hudView.SetLivesText;
             _model.UpdatePoints += _hudView.SetScoreText;
             _model.UpdateWeaponName += _hudView.SetWeaponText;
@@ -109,6 +111,8 @@ namespace Gameplay.Controllers
             _model.PlayerLoseAllLives -= OnPlayerLoseAllLives;
             _view.CollideWithLoot -= OnPlayerCollectsLoot;
 
+            _levelController.AddScore -= OnAddScore;
+
             _model.UpdateLives -= _hudView.SetLivesText;
             _model.UpdatePoints -= _hudView.SetScoreText;
             _model.UpdateWeaponName -= _hudView.SetWeaponText;
@@ -118,6 +122,7 @@ namespace Gameplay.Controllers
         private void Start()
         {
             _hudView.SetLivesText(_model.Lives);
+            Debug.Log($"SetScore({_model.Score})");
             _hudView.SetScoreText(_model.Score);
             _hudView.SetWeaponText(_model.Weapon.Name);
         }

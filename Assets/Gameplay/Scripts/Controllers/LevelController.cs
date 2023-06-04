@@ -16,6 +16,12 @@ namespace Gameplay.Controllers
 {
     public class LevelController : MonoBehaviour
     {
+        #region Events
+
+        public Action AddScore;
+
+        #endregion
+
         #region Editor
 
         [SerializeField]
@@ -79,6 +85,8 @@ namespace Gameplay.Controllers
         {
             HandleLootCreation(id, hitPosition);
             HandleBallCreateAndDestroy(id, hitPosition);
+
+            AddScore?.Invoke();
         }
 
         private void HandleLootCreation(int id, Vector2 hitPosition)
