@@ -122,7 +122,6 @@ namespace Gameplay.Controllers
         private void Start()
         {
             _hudView.SetLivesText(_model.Lives);
-            Debug.Log($"SetScore({_model.Score})");
             _hudView.SetScoreText(_model.Score);
             _hudView.SetWeaponText(_model.Weapon.Name);
         }

@@ -18,7 +18,7 @@ namespace Gameplay.Controllers
     {
         #region Events
 
-        public Action ProjectileHitWithBall;
+        public Action AddScore;
 
         #endregion
 
@@ -86,7 +86,7 @@ namespace Gameplay.Controllers
             HandleLootCreation(id, hitPosition);
             HandleBallCreateAndDestroy(id, hitPosition);
 
-            ProjectileHitWithBall?.Invoke();
+            AddScore?.Invoke();
         }
 
         private void HandleLootCreation(int id, Vector2 hitPosition)
@@ -152,6 +152,11 @@ namespace Gameplay.Controllers
             _runtimeBallsModel.AllBallsDestroyed += OnAllBallsDestroyed;
 
             _backButton.onClick.AddListener(OnBackButtonClicked);
+        }
+
+        private void Start()
+        {
+
         }
 
         private void OnDestroy()
