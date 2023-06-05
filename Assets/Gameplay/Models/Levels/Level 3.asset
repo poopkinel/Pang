@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   _name: Level 3
-  _ballsModel: {fileID: 11400000, guid: 8ccdf4f82d8b5cf4882d022c083e64e2, type: 2}
+  _levelTargetsModel: {fileID: 11400000, guid: b29822a3c0750f745b1746839cc3cfa6, type: 2}
   _timeToFinish: 80
   _levelBackgroundImage: {fileID: 0}
   _levelLoots: 000000000100000002000000

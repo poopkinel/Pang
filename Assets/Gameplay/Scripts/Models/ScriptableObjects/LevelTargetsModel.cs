@@ -39,7 +39,7 @@ namespace Gameplay.Models
 
             if (targets.Count(t => t.Id == id) == 0)
             {
-                throw new ArgumentException("No such ball id in level");
+                throw new ArgumentException("No such target id in level");
             }
 
             return targets.Find(b => b.Id == id);

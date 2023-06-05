@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   _name: Level 2
-  _ballsModel: {fileID: 11400000, guid: 3f83ad761e692034c9f27a386f238e4d, type: 2}
+  _levelTargetsModel: {fileID: 11400000, guid: 83341d90d8b4c6f4993ff4524126b441, type: 2}
   _timeToFinish: 60
   _levelBackgroundImage: {fileID: 0}
-  _levelLoots: 
-  _levelWeapons: []
+  _levelLoots: 01000000
+  _levelWeapons:
+  - {fileID: 11400000, guid: ec15a980741967146b3ba4ea6e017b19, type: 2}
+  - {fileID: 11400000, guid: 5985cc97d1ddf4f4eb96077cae45bd1d, type: 2}
   _pointsForEachBallHit: 200
   _sceneIndex: 4

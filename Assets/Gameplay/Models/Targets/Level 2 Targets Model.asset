@@ -9,16 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d543a758fcfd80a46954afe23de36d8f, type: 3}
-  m_Name: Level 2 Balls Model
+  m_Script: {fileID: 11500000, guid: b3a182fe928f3914ca88967f14cc7dad, type: 3}
+  m_Name: Level 2 Targets Model
   m_EditorClassIdentifier: 
   _balls:
   - _id: 0
     _hitsLeft: 5
-    _spawnPosition: {x: 0, y: 0}
   - _id: 1
     _hitsLeft: 4
-    _spawnPosition: {x: 0, y: 0}
   - _id: 2
     _hitsLeft: 4
-    _spawnPosition: {x: 0, y: 0}
+  _platforms: []
