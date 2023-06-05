@@ -36,6 +36,9 @@ namespace Gameplay.Controllers
         private Timer _timer;
 
         [SerializeField]
+        private TimerView _timerView;
+
+        [SerializeField]
         private BallsViewManager _ballsViewManager;
 
         [SerializeField]
@@ -60,6 +63,8 @@ namespace Gameplay.Controllers
         {
             Debug.Log("Restart Level");
             SceneManager.LoadScene(_model.SceneIndex);
+            
+            _timer.SetStartTime(_model.TimeToFinish);
         }
 
         [ContextMenu("Test/On Projectile Hit With Ball")]
@@ -125,10 +130,17 @@ namespace Gameplay.Controllers
 
         private void OnTimerComplete()
         {
-            if (!_runtimeBallsModel.IsAllBallsDestroyed)
+            foreach (PlayerModel player in _gameModel.Players)
             {
-                Debug.Log("Level failed");
+                player.LoseLife();
+
+                if (player.Lives <= 0)
+                {
+                    new GameplayToGameOverScreenFlow(_model).Execute();
+                    return;
+                }
             }
+            RestartLevel();
         }
 
         private void OnAllBallsDestroyed()
@@ -151,6 +163,8 @@ namespace Gameplay.Controllers
             _runtimeBallsModel = Instantiate(_model.BallsModel); // Instantiate SO to have a runtime copy of the data
 
             _timer.TimerComplete += OnTimerComplete;
+            _timer.TimerTick += _timerView.SetText;
+            _timer.TimeSet += _timerView.SetText;
             _runtimeBallsModel.AllBallsDestroyed += OnAllBallsDestroyed;
 
             _backButton.onClick.AddListener(OnBackButtonClicked);
@@ -158,12 +172,15 @@ namespace Gameplay.Controllers
 
         private void Start()
         {
-
+            _timer.StartTimer();
         }
 
         private void OnDestroy()
         {
             _timer.TimerComplete -= OnTimerComplete;
+            _timer.TimerTick -= _timerView.SetText;
+            _timer.TimeSet -= _timerView.SetText;
+
             _runtimeBallsModel.AllBallsDestroyed -= OnAllBallsDestroyed;
 
             Destroy(_runtimeBallsModel);

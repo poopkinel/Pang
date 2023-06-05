@@ -12,6 +12,7 @@ namespace Gameplay.Infrastructure
 
         public Action<float> TimerTick;
         public Action TimerComplete;
+        public Action<float> TimeSet;
 
         #endregion
 
@@ -33,6 +34,7 @@ namespace Gameplay.Infrastructure
         public void SetStartTime(float timeToSet)
         {
             _timerToSet = timeToSet;
+            TimeSet?.Invoke(_timerToSet);
         }
 
         public void AddTime(float timeToAdd)
