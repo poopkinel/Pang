@@ -10,7 +10,7 @@ namespace Gameplay.Visuals
         void Awake()
         {
             var rTrans = gameObject.GetComponent<RectTransform>();
-            var x = rTrans.rect.width;
+            var x = rTrans.rect.height;
 
             gameObject.GetComponent<CircleCollider2D>().radius = x / 2;
         }
