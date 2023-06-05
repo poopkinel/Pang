@@ -20,3 +20,8 @@ the next extra path of 3 consecutive levels.
 Going on from there I felt that maintaining a Data-View seperation (as part of MVC) would naturally extend to the players,
 leading to modularity of player data and player view. I pursued this direction keeping in mind the a local multiplayer will
 benefit from such logical seperation. This motivated me to continue with the local multiplayer extra path.
+
+* A note on the project directory structure:
+The traditional Scenes, Scripts, Materials, Models etc. structure does not seem optimal to me 
+(it's like keeping all the chairs in your home in the same room). I prefer dividing the project based on features and modules.
+Thus the current project structure reflect this attempt at ordering based on context.
