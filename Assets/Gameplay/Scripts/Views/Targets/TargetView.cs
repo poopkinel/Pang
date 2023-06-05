@@ -1,18 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetView : MonoBehaviour
+public abstract class TargetView : MonoBehaviour
 {
-    
-    void Start()
+    [SerializeField]
+    protected int _id;
+
+    public virtual void SetId(int id)
     {
-        
+        _id = id;
     }
 
-    
-    void Update()
-    {
-        
-    }
+    public virtual int Id => _id;
 }

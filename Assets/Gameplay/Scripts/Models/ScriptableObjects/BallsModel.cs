@@ -54,7 +54,7 @@ namespace Gameplay.Models
         public int CreateBall(int hitsLeft, Vector2 position)
         {
             lastId = _balls.Max(b => b.Id) + 1;
-            _balls.Add(new Ball(lastId, hitsLeft, position));
+            _balls.Add(new Ball(lastId, hitsLeft));
             return lastId;
         }
 

@@ -7,11 +7,17 @@ namespace Gameplay.Infrastructure
 {
     public class MultiplayerManager : MonoBehaviour
     {
+        #region Editor
+
         [SerializeField]
         private List<GameObject> _player2DependentObjects;
 
         [SerializeField]
         private GameModel _gameModel;
+
+        #endregion
+
+        #region Unity Callbacks
 
         void Start()
         {
@@ -23,5 +29,7 @@ namespace Gameplay.Infrastructure
                 }
             }
         }
+
+        #endregion
     }
 }

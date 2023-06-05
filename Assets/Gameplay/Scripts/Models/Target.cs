@@ -17,18 +17,16 @@ namespace Gameplay.Models
         [SerializeField]
         protected int _hitsLeft;
 
-        [SerializeField]
         protected Vector2 _spawnPosition;
 
         #endregion
 
         #region Constructor
 
-        public Target(int id, int hitsLeft, Vector2 SpawnPoint)
+        public Target(int id, int hitsLeft)
         {
             _id = id;
             _hitsLeft = hitsLeft;
-            _spawnPosition = SpawnPoint;
         }
 
         #endregion
@@ -40,8 +38,6 @@ namespace Gameplay.Models
         public virtual int HitsLeft => _hitsLeft;
 
         public virtual bool IsLastHit => _hitsLeft == 0;
-
-        public virtual Vector2 SpawnPoint => _spawnPosition;
 
         #endregion
     }

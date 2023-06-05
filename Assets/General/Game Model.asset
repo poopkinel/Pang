@@ -19,3 +19,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d42c56587d156f4eaaefcd7326be2a9, type: 2}
   _currentLevel: {fileID: 11400000, guid: d3e3251a4a8c103409b2eab9db6ceeeb, type: 2}
   _players: []
+  _ballSizesToPrefabs:
+  - size: 0
+    prefabRef: {fileID: 3452012469457078287, guid: 8189a85672df44a49ab2aab0344e7de6, type: 3}
+  - size: 1
+    prefabRef: {fileID: 423525479051209762, guid: 65892b5c1c474f84984619e59e41dfee, type: 3}
+  - size: 2
+    prefabRef: {fileID: 6076174338791214453, guid: 4e047df1b673a1b4cba82070cd30861c, type: 3}
+  - size: 3
+    prefabRef: {fileID: 1527293436350129540, guid: dc35b0960e92dc845aece8ad6fc6172d, type: 3}
+  - size: 4
+    prefabRef: {fileID: 3260033430471834302, guid: 2ceb55554ec31034c908e732533e40db, type: 3}
+  - size: 5
+    prefabRef: {fileID: 5963829867427861802, guid: bfa9cd6c6bf3fcb40ade36453961f2ea, type: 3}

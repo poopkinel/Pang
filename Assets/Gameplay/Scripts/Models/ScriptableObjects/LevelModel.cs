@@ -1,3 +1,4 @@
+using Gameplay.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace Gameplay.Models
         private string _name;
 
         [SerializeField]
-        private BallsModel _ballsModel;
+        private LevelTargetsModel _levelTargetsModel;
 
         [SerializeField]
         private float _timeToFinish;
@@ -33,7 +34,7 @@ namespace Gameplay.Models
 
         public string LevelName => _name;
 
-        public BallsModel BallsModel => _ballsModel;
+        public LevelTargetsModel ThisLevelTargetsModel => _levelTargetsModel;
 
         public float TimeToFinish => _timeToFinish;
 

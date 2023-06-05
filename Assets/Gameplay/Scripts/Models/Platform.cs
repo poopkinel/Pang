@@ -4,11 +4,19 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-[System.Serializable]
-public class Platform : Target
+namespace Gameplay.Models
 {
-    public Platform(int id, int hitsLeft, Vector2 SpawnPoint) : base(id, hitsLeft, SpawnPoint)
+    [System.Serializable]
+    public class Platform : Target
     {
-    }
-}
+        public Platform(int id, int hitsLeft) : base(id, hitsLeft)
+        {
+        }
 
+        public void TakeHit()
+        {
+            _hitsLeft--;
+        }
+    }
+
+}

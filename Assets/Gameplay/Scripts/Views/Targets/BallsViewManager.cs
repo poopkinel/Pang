@@ -1,3 +1,4 @@
+using Gameplay.Infrastructure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,13 +7,6 @@ using UnityEngine;
 
 namespace Gameplay.Views
 {
-    [System.Serializable]
-    public struct BallSizesToPrefab
-    {
-        public int size;
-        public GameObject prefabRef;
-    }
-
     public class BallsViewManager : MonoBehaviour
     {
         [SerializeField]

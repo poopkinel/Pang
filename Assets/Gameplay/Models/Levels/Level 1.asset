@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86770555c82482488da43e9654a07fa, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  _name: 
-  _ballsModel: {fileID: 11400000, guid: acfa44a991cfc9649b33ff1b67667cb9, type: 2}
+  _name: Level 1
+  _levelTargetsModel: {fileID: 11400000, guid: a914dae3229f85c4ea2f98f7a239e44d, type: 2}
   _timeToFinish: 120
   _levelBackgroundImage: {fileID: 0}
   _levelLoots: 000000000100000002000000

@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum LootType
+namespace Gameplay.Enums
 {
-    Score,
-    Weapon,
-    Time
+    public enum LootType
+    {
+        Score,
+        Weapon,
+        Time
+    }
 }

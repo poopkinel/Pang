@@ -39,7 +39,7 @@ namespace Gameplay.Controllers
         private TimerView _timerView;
 
         [SerializeField]
-        private BallsViewManager _ballsViewManager;
+        private TargetsViewManager _targetsViewManager;
 
         [SerializeField]
         private LootsViewManager _lootsViewManager;
@@ -52,7 +52,7 @@ namespace Gameplay.Controllers
         private Button _backButton;
 
         //[SerializeField]
-        private BallsModel _runtimeBallsModel;
+        private LevelTargetsModel _runtimeTargetsModel;
 
 
         #endregion
@@ -61,9 +61,7 @@ namespace Gameplay.Controllers
 
         public void RestartLevel()
         {
-            Debug.Log("Restart Level");
             SceneManager.LoadScene(_model.SceneIndex);
-            
             _timer.SetStartTime(_model.TimeToFinish);
         }
 
@@ -73,32 +71,32 @@ namespace Gameplay.Controllers
             var arbitraryId = 1; // for testing
             var arbPositionDestroyed = Vector2.zero; // for testing
 
-            OnBallHitByProjectile(arbitraryId, arbPositionDestroyed);
+            OnTargetHitByProjectile(arbitraryId, arbPositionDestroyed);
         }
 
         public void OnProjectileHit(ProjectileView projView, GameObject hitGO, Vector2 hitPosition)
         {
-            var ball = hitGO.GetComponent<BallView>();
-            if (ball != null)
+            var target = hitGO.GetComponent<TargetView>();
+            if (target != null)
             {
-                OnBallHitByProjectile(ball.Id, hitPosition);
+                OnTargetHitByProjectile(target.Id, hitPosition);
             }
 
             projView.ProjectileHit -= OnProjectileHit;
             Destroy(projView.gameObject);
         }
 
-        private void OnBallHitByProjectile(int id, Vector2 hitPosition)
+        private void OnTargetHitByProjectile(int id, Vector2 hitPosition)
         {
             HandleLootCreation(id, hitPosition);
-            HandleBallCreateAndDestroy(id, hitPosition);
+            HandleTargetHit(id, hitPosition);
 
             AddScore?.Invoke();
         }
 
         private void HandleLootCreation(int id, Vector2 hitPosition)
         {
-            var ball = _runtimeBallsModel.GetBallById(id);
+            var ball = _runtimeTargetsModel.GetTargetById(id);
 
             if (Random.Range(0, 1) > 0.1f) // Chance to get a loot
             {
@@ -108,24 +106,54 @@ namespace Gameplay.Controllers
             }
         }
 
-        private void HandleBallCreateAndDestroy(int id, Vector2 hitPosition)
+        private void HandleTargetHit(int id, Vector2 hitPosition)
         {
-            var ball = _runtimeBallsModel.GetBallById(id);
+            var target = _runtimeTargetsModel.GetTargetById(id);
 
+            switch (target)
+            {
+                case Ball ball:
+                    HandleBallHit(id, hitPosition, ball);
+                    break;
+
+
+                case Platform platform:
+                    HandlePlatformHit(id, platform);
+                    break;
+            }
+        }
+
+        private void HandlePlatformHit(int id, Platform platform)
+        {
+            if (platform.HitsLeft == 0)
+            {
+                _runtimeTargetsModel.DestroyTarget(id);
+                _targetsViewManager.DestroyTarget(id);
+            }
+            else
+            {
+                platform.TakeHit();
+            }
+        }
+
+        private void HandleBallHit(int id, Vector2 hitPosition, Ball ball)
+        {
             Vector2 startForceRight = new Vector2(1f, 1f) * 500000;
             Vector2 startForceLeft = new Vector2(-1f, 1f) * 500000;
 
             if (!ball.IsLastHit)
             {
-                int ballOneId = _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
-                int ballTwoId = _runtimeBallsModel.CreateBall(ball.HitsLeft - 1, hitPosition);
+                int ballOneId = _runtimeTargetsModel.CreateBall(ball.HitsLeft - 1);
+                int ballTwoId = _runtimeTargetsModel.CreateBall(ball.HitsLeft - 1);
 
-                _ballsViewManager.Create(ballOneId, ball.HitsLeft, hitPosition, startForceRight);
-                _ballsViewManager.Create(ballTwoId, ball.HitsLeft, hitPosition, startForceLeft);
+                var ballPrefab = _gameModel.BallsSizesToPrefabs.Find(p => p.size == ball.HitsLeft - 1).prefabRef;
+
+                _targetsViewManager.CreateBall(ballPrefab, ballOneId, ball.HitsLeft, hitPosition, startForceRight);
+                _targetsViewManager.CreateBall(ballPrefab, ballTwoId, ball.HitsLeft, hitPosition, startForceLeft);
             }
 
-            _runtimeBallsModel.DestroyBall(id);
-            _ballsViewManager.DestroyBall(id);
+            _runtimeTargetsModel.DestroyTarget(id);
+            _targetsViewManager.DestroyTarget(id);
         }
 
         private void OnTimerComplete()
@@ -160,12 +188,12 @@ namespace Gameplay.Controllers
 
         private void Awake()
         {
-            _runtimeBallsModel = Instantiate(_model.BallsModel); // Instantiate SO to have a runtime copy of the data
+            _runtimeTargetsModel = Instantiate(_model.ThisLevelTargetsModel); // Instantiate SO to have a runtime copy of the data
 
             _timer.TimerComplete += OnTimerComplete;
             _timer.TimerTick += _timerView.SetText;
             _timer.TimeSet += _timerView.SetText;
-            _runtimeBallsModel.AllBallsDestroyed += OnAllBallsDestroyed;
+            _runtimeTargetsModel.AllBallsDestroyed += OnAllBallsDestroyed;
 
             _backButton.onClick.AddListener(OnBackButtonClicked);
         }
@@ -181,9 +209,9 @@ namespace Gameplay.Controllers
             _timer.TimerTick -= _timerView.SetText;
             _timer.TimeSet -= _timerView.SetText;
 
-            _runtimeBallsModel.AllBallsDestroyed -= OnAllBallsDestroyed;
+            _runtimeTargetsModel.AllBallsDestroyed -= OnAllBallsDestroyed;
 
-            Destroy(_runtimeBallsModel);
+            Destroy(_runtimeTargetsModel);
 
             _backButton.onClick.RemoveAllListeners();
 
@@ -191,8 +219,12 @@ namespace Gameplay.Controllers
 
         #endregion
 
+        #region Properties
+
         public LevelModel Model => _model;
 
         public GameModel ThisGameModel => _gameModel;
+
+        #endregion
     }
 }

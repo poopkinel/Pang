@@ -1,3 +1,4 @@
+using Gameplay.Infrastructure;
 using Gameplay.Models;
 using System;
 using System.Collections;
@@ -8,7 +9,6 @@ using UnityEngine;
 
 namespace General.Models
 {
-
     [CreateAssetMenu(menuName = "Pang Models/Game Model", fileName = "Game Model")]
     public class GameModel : ScriptableObject
     {
@@ -24,6 +24,9 @@ namespace General.Models
         [SerializeField]
         private PlayerModel[] _players;
 
+        [SerializeField]
+        private List<BallSizesToPrefab> _ballSizesToPrefabs;
+
         public void SetPlayers(List<PlayerModel> players)
         {
             _players = players.ToArray();
@@ -36,6 +39,8 @@ namespace General.Models
         public LevelModel CurrentLevel => _currentLevel;
 
         public PlayerModel[] Players => _players;
+
+        public List<BallSizesToPrefab> BallsSizesToPrefabs => _ballSizesToPrefabs;
     }
 
 }

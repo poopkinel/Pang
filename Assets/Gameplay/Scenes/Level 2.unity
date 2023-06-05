@@ -3758,7 +3758,8 @@ MonoBehaviour:
   _model: {fileID: 11400000, guid: 9ffd5faaeae7b6542b716713f0cf35a6, type: 2}
   _gameModel: {fileID: 11400000, guid: 79c6765f6f65ae34f8de67ce5f7a1116, type: 2}
   _timer: {fileID: 1868607280}
-  _ballsViewManager: {fileID: 1712991834}
+  _timerView: {fileID: 0}
+  _targetsViewManager: {fileID: 0}
   _lootsViewManager: {fileID: 1064271580}
   _lootFactories:
   - {fileID: 213607841}
@@ -4166,6 +4167,7 @@ MonoBehaviour:
   _projectilePrefabRef: {fileID: 4055442416311842898, guid: dc03e459a8a914847a8d5a532edcae41, type: 3}
   _projectileParent: {fileID: 1404672346}
   _playerMoveSpeed: 250
+  _gameplayCanvas: {fileID: 0}
 --- !u!50 &1484719619
 Rigidbody2D:
   serializedVersion: 4
@@ -4720,6 +4722,7 @@ MonoBehaviour:
   _projectilePrefabRef: {fileID: 4055442416311842898, guid: dc03e459a8a914847a8d5a532edcae41, type: 3}
   _projectileParent: {fileID: 1404672346}
   _playerMoveSpeed: 250
+  _gameplayCanvas: {fileID: 0}
 --- !u!114 &1686075080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4931,17 +4934,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704215051}
   m_CullTransparentMesh: 1
---- !u!114 &1712991834 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4428042272709691479, guid: 131bd5611050aa44dabbda4f10b5b9c1, type: 3}
-  m_PrefabInstance: {fileID: 720298989}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77f16d11d4dc37244ba7bddc894a472b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1868607279
 GameObject:
   m_ObjectHideFlags: 0

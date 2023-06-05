@@ -25,9 +25,6 @@ namespace Gameplay.Controllers
         [SerializeField]
         private LevelController _levelController;
 
-        //[SerializeField]
-        //private WeaponView weaponView;
-
         #endregion
 
         #region Methods
@@ -96,6 +93,7 @@ namespace Gameplay.Controllers
         private void Awake()
         {
             // Event Subscription
+
             _view.CollideWithBall += OnPlayerCollisionWithBall;
             _model.PlayerLoseLife += OnPlayerLoseLife;
             _model.PlayerLoseAllLives += OnPlayerLoseAllLives;
@@ -112,6 +110,8 @@ namespace Gameplay.Controllers
 
         private void OnDestroy()
         {
+            // Event Unsubscription 
+
             _view.CollideWithBall -= OnPlayerCollisionWithBall;
             _model.PlayerLoseLife -= OnPlayerLoseLife;
             _model.PlayerLoseAllLives -= OnPlayerLoseAllLives;
