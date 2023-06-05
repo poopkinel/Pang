@@ -67,19 +67,24 @@ namespace Gameplay.Controllers
 
         private void OnPlayerLoseLife()
         {
-            Debug.Log($"Player Lost Life");
             _levelController.RestartLevel();
         }
 
         private void OnPlayerLoseAllLives()
         {
-            Debug.Log($"Game over, try again");
+            ResetPlayerData();
+            new GameplayToGameOverScreenFlow(_levelController.Model).Execute();
+        }
+
+        private void ResetPlayerData()
+        {
+            _model.ResetLives();
+            _model.ResetScore();
         }
 
         private void OnPlayerCollectsLoot(GameObject lootGO)
         {
             var loot = lootGO.GetComponent<LootViewBase>();
-            Debug.Log($"loot collected: {loot.Type}");
             loot.Model.ApplyEffect(_levelController, this);
         }
 
@@ -97,6 +102,7 @@ namespace Gameplay.Controllers
             _view.CollideWithLoot += OnPlayerCollectsLoot;
 
             _levelController.AddScore += OnAddScore;
+            _levelController.BackButtonPressed += ResetPlayerData;
 
             _model.UpdateLives += _hudView.SetLivesText;
             _model.UpdatePoints += _hudView.SetScoreText;
@@ -112,6 +118,7 @@ namespace Gameplay.Controllers
             _view.CollideWithLoot -= OnPlayerCollectsLoot;
 
             _levelController.AddScore -= OnAddScore;
+            _levelController.BackButtonPressed -= ResetPlayerData;
 
             _model.UpdateLives -= _hudView.SetLivesText;
             _model.UpdatePoints -= _hudView.SetScoreText;

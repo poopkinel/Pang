@@ -75,6 +75,17 @@ namespace Gameplay.Models
             UpdatePoints?.Invoke(_score);
         }
 
+        public void ResetLives()
+        {
+            _lives = 3;
+        }
+
+        public void ResetScore()
+        {
+            _score = 0;
+            UpdatePoints?.Invoke(_score);
+        }
+
         #endregion
 
         #region Properties

@@ -12,9 +12,18 @@ EditorBuildSettings:
     path: Assets/Menus/MultiplayerMenu.unity
     guid: 9b21fd0065071834c990e05723533fc5
   - enabled: 1
+    path: Assets/Menus/GameOverScreen.unity
+    guid: c7d92bb178e2f60488c786ffed5dcec9
+  - enabled: 1
     path: Assets/Gameplay/Scenes/Level 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Gameplay/Scenes/Level 2.unity
+    guid: bc9441afc5074a7408e362ccff2dc1d9
+  - enabled: 1
+    path: Assets/Gameplay/Scenes/Level 3.unity
+    guid: 38c07bf6eeb4da846908bef4536324c8
+  - enabled: 0
+    path: Assets/Gameplay/Scenes/Level 2_Old.unity
     guid: e08afca6f8d03514e8e79a92e5e699cf
   m_configObjects: {}

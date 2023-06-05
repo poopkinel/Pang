@@ -55,21 +55,31 @@ namespace Gameplay.Infrastructure.Input
                 _player1.Move(-1f);
             }
 
-            if (_player1Inputs.right.IsPressed)
+            else if (_player1Inputs.right.IsPressed)
             {
                 _player1.Move(1f);
             }
+            
+            else
+            {
+                _player1.Move(0f);
+            }
 
 
-            //// Player 2
+            // Player 2
             if (_player2Inputs.left.IsPressed)
             {
                 _player2.Move(-1f);
             }
 
-            if (_player2Inputs.right.IsPressed)
+            else if (_player2Inputs.right.IsPressed)
             {
                 _player2.Move(1f);
+            }
+
+            else
+            {
+                _player2.Move(0f);
             }
         }
 

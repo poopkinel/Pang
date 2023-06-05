@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player 1 Model
   m_EditorClassIdentifier: 
   _name: Player 1
-  _score: 0
+  _score: 1500
   _lives: 3
   _weapon: {fileID: 11400000, guid: ec15a980741967146b3ba4ea6e017b19, type: 2}

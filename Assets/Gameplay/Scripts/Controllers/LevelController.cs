@@ -20,6 +20,8 @@ namespace Gameplay.Controllers
 
         public Action AddScore;
 
+        public Action BackButtonPressed;
+
         #endregion
 
         #region Editor
@@ -136,7 +138,7 @@ namespace Gameplay.Controllers
 
         private void OnBackButtonClicked()
         {
-            // stop level (timers, reset data, etc.)
+            BackButtonPressed?.Invoke();
             new FromGameplayToStartScreenFlow(_model).Execute();
         }
 
