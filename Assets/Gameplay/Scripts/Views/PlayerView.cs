@@ -28,6 +28,11 @@ namespace Gameplay.Views
         [SerializeField]
         private float _playerMoveSpeed;
 
+        [SerializeField]
+        private Canvas _gameplayCanvas;
+
+        private RectTransform _playerRectTrn;
+
         #endregion
 
         #region Private Fields
@@ -41,6 +46,7 @@ namespace Gameplay.Views
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _playerRectTrn = GetComponent<RectTransform>();
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -69,8 +75,22 @@ namespace Gameplay.Views
         public void MoveHorizontal(float horizontalAxis)
         {
             var moveForce = horizontalAxis * _playerMoveSpeed * Time.deltaTime;
-            //_rigidbody.AddForce(new Vector2(moveForce, 0));
-            transform.Translate(new Vector2(moveForce, 0));
+
+            var moveLeft = moveForce < 0;
+
+            var padding = _playerRectTrn.sizeDelta.x;
+
+            bool moveLeftLegal = transform.position.x > _gameplayCanvas.pixelRect.xMin + padding;
+            bool moveRighLegal = transform.position.x < _gameplayCanvas.pixelRect.xMax - padding;
+
+            if (moveLeft && moveLeftLegal)
+            { 
+                _playerRectTrn.Translate(new Vector2(moveForce, 0));
+            }
+            else if (!moveLeft && moveRighLegal)
+            {
+                _playerRectTrn.Translate(new Vector2(moveForce, 0));
+            }
         }
 
         [ContextMenu("Test/Move left")]
